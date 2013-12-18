@@ -25,7 +25,7 @@ Here are some samples:
     @inject(myService);
     @end
 
-#### Simple inject using manual wiring #### 
+#### Simple inject using manual wiring ####
 
     @interface InjectExample: NSObject
     // Let's say you have multiple classes which implements the MyServiceProtocol
@@ -37,7 +37,7 @@ Here are some samples:
     @inject(myService, MyServiceImplementation);
     @end
     
-#### Simple inject with classes #### 
+#### Simple inject with classes ####
     @interface InjectExample: NSObject
     // Let's say you have a property with a class type
     @property(nonatomic, readwrite) NSDate *now;

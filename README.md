@@ -9,9 +9,11 @@ Simple, easy and very powerful way to use context and dependency injection for o
 * Easy singleton support
 * Manual object binding
 
-Using CDI will reduce the boilerplate code in many classes and increase the readability. Here are some samples:
+Using CDI will reduce the boilerplate code in many classes, increase readability and allow better testing using the mocking technique.
 
-### Simple inject using auto-wiring ###
+Here are some samples:
+
+#### Simple inject using auto-wiring ####
 
     @interface InjectExample: NSObject
     // Let's say you have one class which implements the MyServiceProtocol
@@ -23,7 +25,7 @@ Using CDI will reduce the boilerplate code in many classes and increase the read
     @inject(myService);
     @end
 
-### Simple inject using manual wiring ###
+#### Simple inject using manual wiring #### 
 
     @interface InjectExample: NSObject
     // Let's say you have multiple classes which implements the MyServiceProtocol
@@ -35,7 +37,7 @@ Using CDI will reduce the boilerplate code in many classes and increase the read
     @inject(myService, MyServiceImplementation);
     @end
     
-### Simple inject with classes ###
+#### Simple inject with classes #### 
     @interface InjectExample: NSObject
     // Let's say you have a property with a class type
     @property(nonatomic, readwrite) NSDate *now;

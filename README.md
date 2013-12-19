@@ -20,8 +20,9 @@ Here are some samples:
     @property(nonatomic, readwrite) MyServiceProtocol *myService;
     @end
     
-    @implementation
-    // Using @inject instead of @synthesize will lookup the implementation class at runtime and create the instance automatically
+    @implementation InjectExample
+    // Using @inject instead of @synthesize will lookup the 
+    // implementation class at runtime and create the instance automatically
     @inject(myService);
     @end
 
@@ -32,8 +33,9 @@ Here are some samples:
     @property(nonatomic, readwrite) MyServiceProtocol *myService;
     @end
     
-    @implementation
-    // Using @inject with a implementation class which will be used to create the myService instance 
+    @implementation InjectExample
+    // Using @inject with a implementation class which will be
+    // used to create the myService instance 
     @inject(myService, MyServiceImplementation);
     @end
     
@@ -43,9 +45,22 @@ Here are some samples:
     @property(nonatomic, readwrite) NSDate *now;
     @end
     
-    @implementation
-    // Using @inject will create a new instance automatically containing the current date and time 
+    @implementation InjectExample
+    // Using @inject will create a new instance automatically
+    // containing the current date and time 
     @inject(now);
+    @end
+    
+#### Simple singleton implementation ####
+    @interface SingletonExample: NSObject
+    @end
+    
+    // This annotation will produce a singleton implementation
+    // for SingletonExample. Inject it into other classes to
+    // access the unique instance.
+    @singleton(SingletonExample)
+    
+    @implementation SingletonExample
     @end
 
 More to follow soon...

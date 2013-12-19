@@ -13,7 +13,7 @@ Using CDI will reduce the boilerplate code in many classes, increase readability
 
 Here are some samples:
 
-#### Simple inject using auto-wiring ####
+#### Simple injection using auto-wiring ####
 
     @interface InjectExample: NSObject
     // Let's say you have one class which implements the MyServiceProtocol
@@ -25,7 +25,7 @@ Here are some samples:
     @inject(myService);
     @end
 
-#### Simple inject using manual wiring ####
+#### Simple injection using manual wiring ####
 
     @interface InjectExample: NSObject
     // Let's say you have multiple classes which implements the MyServiceProtocol
@@ -37,7 +37,7 @@ Here are some samples:
     @inject(myService, MyServiceImplementation);
     @end
     
-#### Simple inject with classes ####
+#### Simple injection with classes ####
     @interface InjectExample: NSObject
     // Let's say you have a property with a class type
     @property(nonatomic, readwrite) NSDate *now;
@@ -47,3 +47,5 @@ Here are some samples:
     // Using @inject will create a new instance automatically containing the current date and time 
     @inject(now);
     @end
+
+More to follow soon...

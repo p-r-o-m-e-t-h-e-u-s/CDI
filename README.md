@@ -58,9 +58,16 @@ Here are some samples:
     // This annotation will produce a singleton implementation
     // for SingletonExample. Inject it into other classes to
     // access the unique instance.
-    @singleton(SingletonExample)
+    @singleton(SingletonExample);
     
     @implementation SingletonExample
     @end
+    
+#### Simple manual binding ####
+    
+    // Override the auto-wiring by binding new implementation classes to use mocking objects.
+    // Your test just needs to use the bindProtocol or bindClass method in the setup of your
+    // Unit testing framework.
+    [[CDI sharedInstance] bindProtocol:@protocol(ExampleProtocol) with:[MyMock class]];
 
 More to follow soon...

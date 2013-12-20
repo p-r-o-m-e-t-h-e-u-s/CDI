@@ -9,7 +9,7 @@ Simple, easy and very powerful way to use context and dependency injection for o
 * Easy singleton support
 * Manual object binding
 
-Using CDI will reduce the boilerplate code in many classes, increase readability and allow better testing using the mocking technique. CDI is independend, which means you can use any unit testing framework. Code samples are provided for XCTest.
+Using CDI will reduce the boilerplate code in many classes, increase readability and allow better testing using the mocking technique. CDI is independend of any other framework, which means you can use any unit testing framework. Code samples are provided for XCTest.
 
 Here are some samples:
 

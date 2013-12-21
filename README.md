@@ -1,3 +1,6 @@
+[![Version](http://cocoapod-badges.herokuapp.com/v/CDI/badge.png)](http://cocoadocs.org/docsets/CDI)
+[![Platform](http://cocoapod-badges.herokuapp.com/p/CDI/badge.png)](http://cocoadocs.org/docsets/CDI)
+
 CDI
 ===
 
@@ -9,7 +12,7 @@ Simple, easy and very powerful way to use context and dependency injection for o
 * Easy singleton support
 * Manual object binding
 
-Using CDI will reduce the boilerplate code in many classes, increase readability and allow better testing using the mocking technique. CDI is independend of any other framework, which means you can use any unit testing framework. Code samples are provided for XCTest.
+Using CDI will reduce the boilerplate code in many classes, increase readability and allow better testing using the mocking technique. CDI does not depend on another framework, which means you can use any unit testing, mocking or other framework. Code samples are provided for XCTest.
 
 Here are some samples:
 
@@ -70,4 +73,21 @@ Here are some samples:
     // Unit testing framework.
     [[CDI sharedInstance] bindProtocol:@protocol(ExampleProtocol) with:[MyMock class]];
 
-More to follow soon...
+## Usage
+
+To run the example project; clone the repo, and run `pod install` from the Project directory first.
+
+## Requirements
+
+No other requirements.
+
+## Installation
+
+CDI is available through [CocoaPods](http://cocoapods.org), to install
+it simply add the following line to your Podfile:
+
+    pod "CDI"
+
+## License
+
+CDI is available under the MIT license. See the LICENSE file for more info.

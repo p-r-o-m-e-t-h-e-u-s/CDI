@@ -1,10 +1,10 @@
-[![Version](http://cocoapod-badges.herokuapp.com/v/CDI/badge.png)](http://cocoadocs.org/docsets/CDI)
-[![Platform](http://cocoapod-badges.herokuapp.com/p/CDI/badge.png)](http://cocoadocs.org/docsets/CDI)
-
 CDI
 ===
 
 Context and Dependency Injection for Objective C
+
+[![Version](http://cocoapod-badges.herokuapp.com/v/CDI/badge.png)](http://cocoadocs.org/docsets/CDI)
+[![Platform](http://cocoapod-badges.herokuapp.com/p/CDI/badge.png)](http://cocoadocs.org/docsets/CDI)
 
 Simple, easy and very powerful way to use context and dependency injection for objective c development. The main features are:
 * Injection by annotation
@@ -87,6 +87,16 @@ CDI is available through [CocoaPods](http://cocoapods.org), to install
 it simply add the following line to your Podfile:
 
     pod "CDI"
+    
+CDI has to be enabled before it can be used for development. Open the `AppDelegate.m` and add
+the following code:
+
+	+(void)initialize
+	{
+    	[super initialize];
+    	// Enable context and dependency injection
+    	[CDI initialize];
+	}
 
 ## License
 

@@ -1,0 +1,17 @@
+PODS:
+  - CDI (1.0.0-beta)
+  - OCMock (2.2.2)
+
+DEPENDENCIES:
+  - CDI (from `../`)
+  - OCMock (~> 2.2)
+
+EXTERNAL SOURCES:
+  CDI:
+    :path: ../
+
+SPEC CHECKSUMS:
+  CDI: cd203c636d4b4dcb586b63b554d166307877a4d4
+  OCMock: ffba68873fd32cfd35d885bddad23bfa816da4a3
+
+COCOAPODS: 0.28.0

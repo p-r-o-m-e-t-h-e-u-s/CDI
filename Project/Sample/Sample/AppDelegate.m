@@ -21,14 +21,12 @@
 //    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 #import "AppDelegate.h"
-#import <CDI.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    
     return YES;
 }
 							
@@ -57,13 +55,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-+(void)initialize
-{
-    [super initialize];
-    // Enable context and dependency injection
-    [CDI initialize];
 }
 
 @end

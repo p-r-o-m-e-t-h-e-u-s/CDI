@@ -20,25 +20,30 @@
 //    IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 //    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-#import "ViewController.h"
-#import <CDI/CDI.h>
 
-@interface ViewController ()
+#import <XCTest/XCTest.h>
+
+@interface SampleTests : XCTestCase
 
 @end
 
-@implementation ViewController
+@implementation SampleTests
 
-- (void)viewDidLoad
+- (void)setUp
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    [super setUp];
+    // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
-- (void)didReceiveMemoryWarning
+- (void)tearDown
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [super tearDown];
+}
+
+- (void)testExample
+{
+        // XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
 }
 
 @end

@@ -21,13 +21,7 @@
 //    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 #import <UIKit/UIKit.h>
-#import "MySampleService.h"
 
-@interface ViewController : UIViewController {
-}
-@property(nonatomic) id<MySampleService> sampleService;
-@property(nonatomic) NSString *status;
-@property(nonatomic) NSNumber *count;
-@property (weak, nonatomic) IBOutlet UITextView *logArea;
-- (IBAction)doIt:(id)sender;
+@interface ViewController : UIViewController
+
 @end

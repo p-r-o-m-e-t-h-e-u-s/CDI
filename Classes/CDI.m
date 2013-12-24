@@ -203,7 +203,7 @@
  */
 - (instancetype)initUniqueInstance {
 
-    self = [super init];
+    if (self = [super init]) {
 
     // Create the instance variables
     _implementationBindings = [[NSMutableDictionary alloc] init];
@@ -241,6 +241,7 @@
         }
         free(classes);
     }
+    }
     return self;
 }
 
@@ -252,8 +253,13 @@
  */
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "InfiniteRecursion"
-- (id)doInject {
+- (id)initWithInject {
     
+    // Avoid unlimited loop - injection will not be available in the CDI implementation itself
+    if ([self isKindOfClass:[CDI class]]) {
+        return self;
+    }
+
     unsigned int methodIndex = 0;
     
     Method *methods = class_copyMethodList([self class], &methodIndex);
@@ -284,7 +290,7 @@
         free((void *) methods);
     }
     // Now call the init (remember init was renamed to doInject)
-    return [self doInject];
+    return [self initWithInject];
 }
 #pragma clang diagnostic pop
 
@@ -294,9 +300,9 @@
 +(void) swapInitWithDoInjectMethod {
     
     Method initMethod = class_getInstanceMethod([NSObject class], @selector(init));
-    Method doInjectMethod = class_getInstanceMethod([CDI class], @selector(doInject));
+    Method doInjectMethod = class_getInstanceMethod([CDI class], @selector(initWithInject));
 
-    if (class_addMethod([NSObject class], @selector(doInject), method_getImplementation(initMethod), method_getTypeEncoding(initMethod))) {
+    if (class_addMethod([NSObject class], @selector(initWithInject), method_getImplementation(initMethod), method_getTypeEncoding(initMethod))) {
         method_exchangeImplementations(initMethod, doInjectMethod);
     }
 }

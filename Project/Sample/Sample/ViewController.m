@@ -29,6 +29,10 @@
 
 @implementation ViewController
 
+@synthesize status, count;
+
+@inject(sampleService);
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -39,6 +43,13 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)doIt:(id)sender {
+    status = [sampleService getStatus];
+    count = [sampleService count];
+    NSLog(@"Sample service says: Count %@ -> %@", count, status);
+    _logArea.text = [_logArea.text stringByAppendingFormat:@"\nCount %@: github.com status is %@", count, status];
 }
 
 @end

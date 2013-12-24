@@ -3,8 +3,8 @@ CDI
 
 Context and Dependency Injection for Objective C
 
-[![Version](http://cocoapod-badges.herokuapp.com/v/CDI/badge.png)](http://cocoadocs.org/docsets/CDI)
-[![Platform](http://cocoapod-badges.herokuapp.com/p/CDI/badge.png)](http://cocoadocs.org/docsets/CDI)
+[![Version](https://cocoapod-badges.herokuapp.com/v/CDI/badge.png)](http://cocoadocs.org/docsets/CDI)
+[![Platform](https://cocoapod-badges.herokuapp.com/p/CDI/badge.png)](http://cocoadocs.org/docsets/CDI)
 
 Simple, easy and very powerful way to use context and dependency injection for objective c development. The main features are:
 * Injection by annotation

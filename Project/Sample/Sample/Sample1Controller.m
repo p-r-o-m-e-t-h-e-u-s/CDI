@@ -20,22 +20,24 @@
 //    IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 //    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-
-#import "MySampleServiceImplemetation.h"
+#import "Sample1Controller.h"
 #import <CDI/CDI.h>
 
-@singleton(MySampleServiceImplemetation);
+@interface Sample1Controller ()
 
-@implementation MySampleServiceImplemetation
+@end
 
-@inject(count);
+@implementation Sample1Controller
 
-// https://status.github.com/api/status.json
--(NSString*)getStatus {
-    count = [NSNumber numberWithInt:[count intValue] + 1];
-    NSError* error;
-    NSString* htmlData = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:@"https://status.github.com/api/status.json"] encoding:NSUTF8StringEncoding error:&error];
-    return htmlData;
+@synthesize status, count;
+
+@inject(sampleService);
+
+- (IBAction)doIt:(id)sender {
+    status = [sampleService getStatus];
+    count = [sampleService count];
+    NSLog(@"Sample service says: Count %@ -> %@", count, status);
+    _logArea.text = [_logArea.text stringByAppendingFormat:@"\nCount %@: github.com status is %@", count, status];
 }
 
 @end

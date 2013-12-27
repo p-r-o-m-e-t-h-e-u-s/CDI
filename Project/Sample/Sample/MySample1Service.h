@@ -22,8 +22,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MySampleService.h"
 
-@interface MySampleServiceImplemetation : NSObject <MySampleService>
-@property(nonatomic,readonly) NSNumber *count;
+@protocol MySample1Service <NSObject>
+
+-(NSString*)getStatus;
+
+-(NSNumber*)count;
+
 @end

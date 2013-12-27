@@ -24,14 +24,14 @@
 #import <XCTest/XCTest.h>
 #import <CDI.h>
 #import <OCMock/OCMock.h>
-#import "ViewController.h"
-#import "MySampleServiceImplemetation.h"
+#import "Sample1Controller.h"
+#import "MySample1ServiceImplemetation.h"
 
-@interface ViewControllerTests : XCTestCase
-@property ViewController *controller;
+@interface Sample1ControllerTests : XCTestCase
+@property Sample1Controller *controller;
 @end
 
-@implementation ViewControllerTests
+@implementation Sample1ControllerTests
 
 @inject(controller);
 
@@ -56,9 +56,9 @@
 
 - (void)testWithOCMock
 {
-    id mockedService = [OCMockObject mockForClass:[MySampleServiceImplemetation class]];
+    id mockedService = [OCMockObject mockForClass:[MySample1ServiceImplemetation class]];
     [[[mockedService stub] andReturn:@"Status set by mock!"] getStatus];
-    [(MySampleServiceImplemetation*)[[mockedService stub] andReturn:[NSNumber numberWithInt:-1]] count];
+    [(MySample1ServiceImplemetation*)[[mockedService stub] andReturn:[NSNumber numberWithInt:-1]] count];
     controller.sampleService = mockedService;
     controller.status = nil;
     [controller doIt:nil];

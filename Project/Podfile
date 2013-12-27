@@ -3,7 +3,4 @@ xcodeproj 'Sample/Sample.xcodeproj'
 workspace 'CDI.xcworkspace'
 platform :ios, "7.0"
 
-target :"SampleTests" do
-    pod 'OCMock', '~> 2.2'
-end
 

@@ -21,12 +21,21 @@
 //    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <CDI.h>
 
-@protocol MySampleService <NSObject>
+@interface Demo : NSObject
 
--(NSString*)getStatus;
+-(void)doDemo;
 
--(NSNumber*)count;
+-(void)doDemo2;
+@end
+
+@interface Sample5Controller : UIViewController {
+}
+
+@property(nonatomic) Demo *demo;
+
+- (IBAction)doIt:(id)sender;
 
 @end

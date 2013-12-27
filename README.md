@@ -16,20 +16,24 @@ Using CDI will reduce the boilerplate code in many classes, increase readability
 
 Here are some samples:
 
-#### Simple injection using auto-wiring ####
+#### Simple injection using auto-wiring
 
     @interface InjectExample: NSObject
     // Let's say you have one class which implements the MyServiceProtocol
+    ...
     @property(nonatomic, readwrite) MyServiceProtocol *myService;
+    ...
     @end
     
     @implementation InjectExample
+    ...
     // Using @inject instead of @synthesize will lookup the 
     // implementation class at runtime and create the instance automatically
     @inject(myService);
+    ...
     @end
 
-#### Simple injection using manual wiring ####
+#### Simple injection using manual wiring
 
     @interface InjectExample: NSObject
     // Let's say you have multiple classes which implements the MyServiceProtocol
@@ -42,7 +46,7 @@ Here are some samples:
     @inject(myService, MyServiceImplementation);
     @end
     
-#### Simple injection with classes ####
+#### Simple injection with classes
     @interface InjectExample: NSObject
     // Let's say you have a property with a class type
     @property(nonatomic, readwrite) NSDate *now;
@@ -54,7 +58,7 @@ Here are some samples:
     @inject(now);
     @end
     
-#### Simple singleton implementation ####
+#### Simple singleton implementation
     @interface SingletonExample: NSObject
     @end
     
@@ -66,7 +70,7 @@ Here are some samples:
     @implementation SingletonExample
     @end
     
-#### Simple manual binding ####
+#### Simple manual binding
     
     // Override the auto-wiring by binding new implementation classes to use mocking objects.
     // Your test just needs to use the bindProtocol or bindClass method in the setup of your
@@ -88,15 +92,24 @@ it simply add the following line to your Podfile:
 
     pod "CDI"
     
-CDI has to be enabled before it can be used for development. Open the `AppDelegate.m` and add
-the following code:
+CDI has to be enabled before it can be used for development. Open the `AppDelegate.m` add
+the following `initialize` method to the implementation:
 
+	#import "AppDelegate.h"
+	#import <CDI.h>
+
+	@implementation AppDelegate
+	
+	...
+	
 	+(void)initialize
 	{
     	[super initialize];
     	// Enable context and dependency injection
     	[CDI initialize];
 	}
+	
+	@end
 
 ## License
 

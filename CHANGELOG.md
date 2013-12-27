@@ -2,4 +2,10 @@
 
 ## 1.0.0-beta
 
-Initial release.
+#### Initial release.
+
+The following annotations are supported:
+
+* @singletone
+* @inject
+

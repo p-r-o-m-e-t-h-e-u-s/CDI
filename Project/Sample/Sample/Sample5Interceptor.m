@@ -20,36 +20,19 @@
 //    IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 //    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-#import "ViewController.h"
-#import <CDI/CDI.h>
 
-@interface ViewController ()
+#import "Sample5Interceptor.h"
 
-@end
+@implementation Sample5Interceptor
 
-@implementation ViewController
-
-@synthesize status, count;
-
-@inject(sampleService);
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)doIt:(id)sender {
-    status = [sampleService getStatus];
-    count = [sampleService count];
-    NSLog(@"Sample service says: Count %@ -> %@", count, status);
-    _logArea.text = [_logArea.text stringByAppendingFormat:@"\nCount %@: github.com status is %@", count, status];
+-(void)invoke:(CDIInvocationContext *)context {
+    // Invoke the called method
+    NSDate *startTime = [NSDate new];
+    [context execute];
+    
+    NSTimeInterval diff = [[NSDate new] timeIntervalSinceDate:startTime];
+    // Log time output
+    NSLog(@"Executed [%@ %@] in %fs",context.target, context.method, diff);
 }
 
 @end

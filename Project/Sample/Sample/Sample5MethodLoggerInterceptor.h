@@ -21,8 +21,8 @@
 //    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "CDIInterceptor.h"
+#import <Foundation/Foundation.h>
+#import <CDI/CDI.h>
 
-@interface Sample5Interceptor : CDIInterceptor
-
+@interface Sample5MethodLoggerInterceptor : CDIInterceptor
 @end

@@ -21,18 +21,8 @@
 //    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "Sample5Interceptor.h"
+#import "CDIInterceptor.h"
 
-@implementation Sample5Interceptor
-
--(void)invoke:(CDIInvocationContext *)context {
-    // Invoke the called method
-    NSDate *startTime = [NSDate new];
-    [context execute];
-    
-    NSTimeInterval diff = [[NSDate new] timeIntervalSinceDate:startTime];
-    // Log time output
-    NSLog(@"Executed [%@ %@] in %fs",context.target, context.method, diff);
-}
+@interface Sample5TimeInterceptor : CDIInterceptor
 
 @end

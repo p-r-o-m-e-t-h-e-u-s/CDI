@@ -22,13 +22,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CDI.h>
+#import "CDIInjector.h"
 
 @interface Demo : NSObject
 
 -(void)doDemo;
 
--(void)doDemo2;
 @end
 
 @interface Sample5Controller : UIViewController {

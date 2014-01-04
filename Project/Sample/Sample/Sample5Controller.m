@@ -22,38 +22,17 @@
 //
 
 #import "Sample5Controller.h"
-#import "Sample5Interceptor.h"
-#import <CDI.h>
-
-
-@interface Sample5MethodLoggerInterceptor : CDIInterceptor
-@end
-
-@implementation Sample5MethodLoggerInterceptor
-
--(void)invoke:(CDIInvocationContext *)context {
-    // Invoke the called method
-    NSLog(@"-> Entering [%@ %@]", context.target, context.method);
-    [context execute];
-    NSLog(@"<- Leaving [%@ %@]", context.target, context.method);
-}
-
-@end
-
-
+#import <CDI/CDI.h>
+#import "Sample5TimeInterceptor.h"
+#import "Sample5MethodLoggerInterceptor.h"
 
 @intercept(Demo,Sample5MethodLoggerInterceptor)
-@intercept(Demo,Sample5Interceptor)
+@intercept(Demo,Sample5TimeInterceptor)
 
 @implementation Demo
 
 -(void)doDemo {
-    NSLog(@"Demo ist done!");
-}
-
-
--(void)doDemo2 {
-    NSLog(@"Demo2 ist done!");
+    NSLog(@"Demo is performed!");
 }
 
 @end
@@ -63,27 +42,13 @@
 @end
 
 @intercept(Sample5Controller,Sample5MethodLoggerInterceptor)
-@intercept(Sample5Controller,Sample5Interceptor)
-
+    // @intercept(Sample5Controller,Sample5Interceptor)
 
 @implementation Sample5Controller
 
 @inject(demo);
 
--(id)initWithCoder:(NSCoder *)aDecoder {
-self = [super init];
-    return [super initWithCoder:aDecoder];
-}
-
--(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    return self;
-}
-
 - (IBAction)doIt:(id)sender {
-        // NSLog(@"You pressed the button 'Do it!' with argument %@", sender);
-        // Demo *d = [[Demo alloc] init];
     [demo doDemo];
 }
 @end

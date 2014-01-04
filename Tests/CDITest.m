@@ -22,7 +22,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <CDI/CDI.h>
+#import "CDIInjector.h"
 
 @protocol TestProtocol <NSObject>
 @end
@@ -110,7 +110,7 @@
 
 @interface CDITest : XCTestCase {
     // Context and dependency injection implementation
-    CDI *cdi;
+    CDIInjector *cdi;
 
     NSDate *testInstance;
 
@@ -137,7 +137,7 @@
     [super setUp];
 
     // Put setup code here; it will be run once, before the first test case.
-    cdi = [CDI sharedInstance];
+    cdi = [CDIInjector sharedInstance];
 
     testInstance = nil;
     testProtocol = nil;
@@ -154,7 +154,7 @@
 }
 
 - (void)testSharedInstance {
-    if (cdi != [CDI sharedInstance]) XCTFail(@"Singleton implementation seems wrong \"%s\"", __PRETTY_FUNCTION__);
+    if (cdi != [CDIInjector sharedInstance]) XCTFail(@"Singleton implementation seems wrong \"%s\"", __PRETTY_FUNCTION__);
 }
 
 - (void)testCreateInstanceWithClass {

@@ -21,21 +21,17 @@
 //    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "MySample1ServiceImplemetation.h"
-#import "CDIInjector.h"
+#import "Sample5TimeInterceptor.h"
 
-@singleton(MySample1ServiceImplemetation);
+@implementation Sample5TimeInterceptor
 
-@implementation MySample1ServiceImplemetation
-
-@inject(count);
-
-// https://status.github.com/api/status.json
--(NSString*)getStatus {
-    count = [NSNumber numberWithInt:[count intValue] + 1];
-    NSError* error;
-    NSString* htmlData = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:@"https://status.github.com/api/status.json"] encoding:NSUTF8StringEncoding error:&error];
-    return htmlData;
+-(void)invoke:(CDIInvocationContext *)context {
+    // Invoke the called method
+    NSDate *startTime = [NSDate new];
+    [context execute];
+    NSTimeInterval diff = [[NSDate new] timeIntervalSinceDate:startTime];
+    // Log time output
+    NSLog(@"Executed [%@ %@] in %fs",context.target, context.method, diff);
 }
 
 @end

@@ -50,19 +50,19 @@
 @interface CDIInvocationContext : NSObject {
 }
 
-@property(nonatomic,readonly) id target;
-@property(nonatomic,readonly) SEL selector;
-@property(nonatomic,readonly) NSString *method;
+@property(nonatomic, readonly) id target;
+@property(nonatomic, readonly) SEL selector;
+@property(nonatomic, readonly) NSString *method;
 
 /**
  * Initialize the invocation context with the invocation and a list of all interceptors in the chain.
  */
--(id)initWithInvocation:(NSInvocation*)anInvocation andInterceptors:(NSArray*) interceptors;
+- (id)initWithInvocation:(NSInvocation *)anInvocation andInterceptors:(NSArray *)interceptors;
 
 /**
  * Execute the method or call another interceptor in the chain.
  */
--(void)execute;
+- (void)execute;
 
 @end
 
@@ -70,13 +70,13 @@
 /**
  * Invoke is called for any registred interceptor for method call
  */
--(void)invoke:(CDIInvocationContext *)context;
+- (void)invoke:(CDIInvocationContext *)context;
 @end
 
 @interface CDIInterceptorProxy : NSProxy {
 }
 
-@property(nonatomic) NSArray* interceptors;
+@property(nonatomic) NSArray *interceptors;
 
 - (id)initWithTarget:(id)aTarget;
 

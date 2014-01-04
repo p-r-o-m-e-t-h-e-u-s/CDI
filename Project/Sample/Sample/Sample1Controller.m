@@ -21,7 +21,7 @@
 //    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 #import "Sample1Controller.h"
-#import <CDI/CDI.h>
+#import "CDIInjector.h"
 
 @interface Sample1Controller ()
 

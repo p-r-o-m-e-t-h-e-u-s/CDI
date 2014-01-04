@@ -10,8 +10,8 @@
 		2CFAC95C2A344A7294CD980E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B63DAA6991DD41248233B144 /* libPods.a */; };
 		33C99049186BAB6800A6C0BE /* Sample5Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C99048186BAB6800A6C0BE /* Sample5Controller.m */; };
 		33C9904A186BAB6800A6C0BE /* Sample5Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C99048186BAB6800A6C0BE /* Sample5Controller.m */; };
-		33C9904D186BAF7900A6C0BE /* Sample5Interceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C9904C186BAF7900A6C0BE /* Sample5Interceptor.m */; };
-		33C9904E186BAF7900A6C0BE /* Sample5Interceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C9904C186BAF7900A6C0BE /* Sample5Interceptor.m */; };
+		33C9904D186BAF7900A6C0BE /* Sample5TimeInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C9904C186BAF7900A6C0BE /* Sample5TimeInterceptor.m */; };
+		33C9904E186BAF7900A6C0BE /* Sample5TimeInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C9904C186BAF7900A6C0BE /* Sample5TimeInterceptor.m */; };
 		33DC39C41866F1B200235A63 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DC39C31866F1B200235A63 /* Foundation.framework */; };
 		33DC39C61866F1B200235A63 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DC39C51866F1B200235A63 /* CoreGraphics.framework */; };
 		33DC39C81866F1B200235A63 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DC39C71866F1B200235A63 /* UIKit.framework */; };
@@ -30,6 +30,7 @@
 		33DC39FC1866F3A000235A63 /* CDITest.m in Sources */ = {isa = PBXBuildFile; fileRef = 33DC39FB1866F3A000235A63 /* CDITest.m */; };
 		33DC3A871867A5FD00235A63 /* MySample1ServiceImplemetation.m in Sources */ = {isa = PBXBuildFile; fileRef = 33DC3A861867A5FD00235A63 /* MySample1ServiceImplemetation.m */; };
 		D700B6C001E64CA29408C7FE /* libPods-SampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D072CC990AAD4DBAAE0E7197 /* libPods-SampleTests.a */; };
+		FCDDFE5065DD2755A93EBAE2 /* Sample5MethodLoggerInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDDFC8F1046927968E15937 /* Sample5MethodLoggerInterceptor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +46,8 @@
 /* Begin PBXFileReference section */
 		33C99047186BAB6800A6C0BE /* Sample5Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample5Controller.h; sourceTree = "<group>"; };
 		33C99048186BAB6800A6C0BE /* Sample5Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample5Controller.m; sourceTree = "<group>"; };
-		33C9904B186BAF7900A6C0BE /* Sample5Interceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample5Interceptor.h; sourceTree = "<group>"; };
-		33C9904C186BAF7900A6C0BE /* Sample5Interceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample5Interceptor.m; sourceTree = "<group>"; };
+		33C9904B186BAF7900A6C0BE /* Sample5TimeInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample5TimeInterceptor.h; sourceTree = "<group>"; };
+		33C9904C186BAF7900A6C0BE /* Sample5TimeInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample5TimeInterceptor.m; sourceTree = "<group>"; };
 		33DC39C01866F1B200235A63 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33DC39C31866F1B200235A63 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		33DC39C51866F1B200235A63 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -75,6 +76,8 @@
 		B63DAA6991DD41248233B144 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D072CC990AAD4DBAAE0E7197 /* libPods-SampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3871E6378834DA2B8AC56F1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		FCDDF7AA5BC97A75E4E25316 /* Sample5MethodLoggerInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample5MethodLoggerInterceptor.h; sourceTree = "<group>"; };
+		FCDDFC8F1046927968E15937 /* Sample5MethodLoggerInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample5MethodLoggerInterceptor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,10 +121,12 @@
 		33C99046186BA93200A6C0BE /* Sample5 */ = {
 			isa = PBXGroup;
 			children = (
-				33C9904B186BAF7900A6C0BE /* Sample5Interceptor.h */,
-				33C9904C186BAF7900A6C0BE /* Sample5Interceptor.m */,
+				33C9904B186BAF7900A6C0BE /* Sample5TimeInterceptor.h */,
+				33C9904C186BAF7900A6C0BE /* Sample5TimeInterceptor.m */,
 				33C99047186BAB6800A6C0BE /* Sample5Controller.h */,
 				33C99048186BAB6800A6C0BE /* Sample5Controller.m */,
+				FCDDFC8F1046927968E15937 /* Sample5MethodLoggerInterceptor.m */,
+				FCDDF7AA5BC97A75E4E25316 /* Sample5MethodLoggerInterceptor.h */,
 			);
 			name = Sample5;
 			sourceTree = "<group>";
@@ -373,9 +378,10 @@
 				33DC39DD1866F1B200235A63 /* Sample1Controller.m in Sources */,
 				33C99049186BAB6800A6C0BE /* Sample5Controller.m in Sources */,
 				33DC39D41866F1B200235A63 /* AppDelegate.m in Sources */,
-				33C9904D186BAF7900A6C0BE /* Sample5Interceptor.m in Sources */,
+				33C9904D186BAF7900A6C0BE /* Sample5TimeInterceptor.m in Sources */,
 				33DC3A871867A5FD00235A63 /* MySample1ServiceImplemetation.m in Sources */,
 				33DC39D01866F1B200235A63 /* main.m in Sources */,
+				FCDDFE5065DD2755A93EBAE2 /* Sample5MethodLoggerInterceptor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,7 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33DC39FC1866F3A000235A63 /* CDITest.m in Sources */,
-				33C9904E186BAF7900A6C0BE /* Sample5Interceptor.m in Sources */,
+				33C9904E186BAF7900A6C0BE /* Sample5TimeInterceptor.m in Sources */,
 				33DC39F21866F1B200235A63 /* Sample1ControllerTests.m in Sources */,
 				33C9904A186BAB6800A6C0BE /* Sample5Controller.m in Sources */,
 			);

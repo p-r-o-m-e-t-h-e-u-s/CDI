@@ -26,17 +26,17 @@
 
 
 @implementation CDIInvocationContext {
-    
+
     /**
      * The original invocation provided by the proxy implementation.
      */
     NSInvocation *invocation;
-    
+
     /**
      * TODO
      */
     NSArray *interceptors;
-    
+
     long count;
 }
 
@@ -45,7 +45,7 @@
 /**
  * Initialize the invocation context with the invocation and a list of all interceptors in the chain.
  */
--(id)initWithInvocation:(NSInvocation*)anInvocation andInterceptors:(NSArray*) allInterceptors {
+- (id)initWithInvocation:(NSInvocation *)anInvocation andInterceptors:(NSArray *)allInterceptors {
     if (self = [super init]) {
         invocation = anInvocation;
         interceptors = allInterceptors;
@@ -54,23 +54,23 @@
     return self;
 }
 
--(id)target {
+- (id)target {
     return invocation.target;
 }
 
--(SEL)selector {
+- (SEL)selector {
     return invocation.selector;
 }
 
--(NSString*)method {
+- (NSString *)method {
     return [NSString stringWithUTF8String:sel_getName(self.selector)];
 }
 
 /**
  * Execute the method or call another interceptor in the chain.
  */
--(void)execute {
-    if([interceptors count] > count) {
+- (void)execute {
+    if ([interceptors count] > count) {
         CDIInterceptor *nextInterceptor = [interceptors objectAtIndex:count++];
         [nextInterceptor invoke:self];
     } else {
@@ -82,13 +82,13 @@
 @implementation CDIInterceptor {
 }
 
--(void)invoke:(CDIInvocationContext *)context {
+- (void)invoke:(CDIInvocationContext *)context {
 }
 
 @end
 
 
-    // MessageInterceptor.m
+// MessageInterceptor.m
 @implementation CDIInterceptorProxy {
     id target;
 }
@@ -101,27 +101,27 @@
 }
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)sel {
-    NSMethodSignature *signature = [target methodSignatureForSelector: sel];
+    NSMethodSignature *signature = [target methodSignatureForSelector:sel];
     if (signature == nil) {
-        signature = [super methodSignatureForSelector: sel];
+        signature = [super methodSignatureForSelector:sel];
     }
     return signature;
 }
 
 - (BOOL)respondsToSelector:(SEL)aSelector {
-    return [target respondsToSelector: aSelector] ? YES : [super respondsToSelector: aSelector];
+    return [target respondsToSelector:aSelector] ? YES : [super respondsToSelector:aSelector];
 }
 
 - (void)forwardInvocation:(NSInvocation *)invocation {
 //    SEL aSelector = [invocation selector];
 //    (void)aSelector;
     invocation.target = target;
-    
+
     // Build the chain of interceptors, which will be executed sequentially
     CDIInvocationContext *context = [[CDIInvocationContext alloc] initWithInvocation:invocation andInterceptors:self.interceptors];
     [context execute];
-    
-    
+
+
 }
 
 @end

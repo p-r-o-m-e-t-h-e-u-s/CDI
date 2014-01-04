@@ -22,8 +22,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <CDI.h>
-#import <OCMock/OCMock.h>
+#import "CDIInjector.h"
 #import "Sample1Controller.h"
 #import "MySample1ServiceImplemetation.h"
 
@@ -52,17 +51,6 @@
     controller.status = nil;
     [controller doIt:nil];
     XCTAssertNotNil(controller.status, @"Execution faild \"%s\"", __PRETTY_FUNCTION__);
-}
-
-- (void)testWithOCMock
-{
-    id mockedService = [OCMockObject mockForClass:[MySample1ServiceImplemetation class]];
-    [[[mockedService stub] andReturn:@"Status set by mock!"] getStatus];
-    [(MySample1ServiceImplemetation*)[[mockedService stub] andReturn:[NSNumber numberWithInt:-1]] count];
-    controller.sampleService = mockedService;
-    controller.status = nil;
-    [controller doIt:nil];
-    XCTAssertTrue([controller.status compare:@"Status set by mock!"] == NSOrderedSame,  @"Execution faild \"%s\"", __PRETTY_FUNCTION__);
 }
 
 @end

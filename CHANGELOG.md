@@ -1,11 +1,23 @@
 # CDI CHANGELOG
 
+---
+
+## 1.0.0-beta2
+
+###### Release Date: 06.01.2014
+
+* Documentation and samples updated.
+* Added annotation:
+	* @intercept
+
+---
+
 ## 1.0.0-beta
 
-#### Initial release.
+###### Release Date: 24.12.2013
 
-The following annotations are supported:
-
-* @singletone
-* @inject
+* Initial release. 
+* Added annotation:
+	* @singletone
+	* @inject
 

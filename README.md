@@ -6,13 +6,20 @@ Context and Dependency Injection for Objective C
 [![Version](https://cocoapod-badges.herokuapp.com/v/CDI/badge.png)](http://cocoadocs.org/docsets/CDI)
 [![Platform](https://cocoapod-badges.herokuapp.com/p/CDI/badge.png)](http://cocoadocs.org/docsets/CDI)
 
-Simple, easy and very powerful way to use context and dependency injection for objective c development. The main features are:
+Simple, easy and very powerful way to use context and dependency injection and interception for objective c development. CDI is designed to solve some common software development patterns like [Dependency Injection](http://en.wikipedia.org/wiki/Dependency_injection) / [Inversion of Control](http://en.wikipedia.org/wiki/Inversion_of_control), [Singleton](http://en.wikipedia.org/wiki/Singleton_pattern) and [Interception](http://en.wikipedia.org/wiki/Interceptor_pattern) (an minimalistic [AOP](http://en.wikipedia.org/wiki/Aspect-oriented_programming) support).
+
+The main features are:
+
 * Injection by annotation
 * Component auto-wiring
-* Easy singleton support
 * Manual object binding
+* Easy singleton support
+* Interception support
 
-Using CDI will reduce the boilerplate code in many classes, increase readability and allow better testing using the mocking technique. CDI does not depend on another framework, which means you can use any unit testing, mocking or other framework. Code samples are provided for XCTest.
+
+Using CDI will reduce the boilerplate code in many classes, increase readability and allow better testing. The intreception functionality will also provide the ability to separate the implementation code by aspects like security, logging and other facets.
+
+CDI does not depend on another framework, which means you can use any unit testing, mocking or other framework *(see Limitation chapter)*. Code samples are provided for XCTest.
 
 Here are some samples:
 
@@ -36,30 +43,39 @@ Here are some samples:
 #### Simple injection using manual wiring
 
     @interface InjectExample: NSObject
+    ...
     // Let's say you have multiple classes which implements the MyServiceProtocol
     @property(nonatomic, readwrite) MyServiceProtocol *myService;
+    ...
     @end
     
     @implementation InjectExample
+    ...
     // Using @inject with a implementation class which will be
     // used to create the myService instance 
     @inject(myService, MyServiceImplementation);
+    ...
     @end
     
 #### Simple injection with classes
     @interface InjectExample: NSObject
+    ...
     // Let's say you have a property with a class type
     @property(nonatomic, readwrite) NSDate *now;
+    ...
     @end
     
     @implementation InjectExample
+    ...
     // Using @inject will create a new instance automatically
     // containing the current date and time 
     @inject(now);
+    ...
     @end
     
 #### Simple singleton implementation
     @interface SingletonExample: NSObject
+    ...
     @end
     
     // This annotation will produce a singleton implementation
@@ -68,6 +84,7 @@ Here are some samples:
     @singleton(SingletonExample);
     
     @implementation SingletonExample
+    ...
     @end
     
 #### Simple manual binding
@@ -77,13 +94,53 @@ Here are some samples:
     // Unit testing framework.
     [[CDI sharedInstance] bindProtocol:@protocol(ExampleProtocol) with:[MyMock class]];
 
+#### Interceptor implementation
+    // This is a very simple method execution logger.
+    @interface MethodLoggerInterceptor : CDIInterceptor
+	@end
+
+	@implementation MethodLoggerInterceptor
+	// The invoke method is called on each method call.
+	-(void)invoke:(CDIInvocationContext *)context {
+    	NSLog(@"--> Entering [%@:%@]", context.target, context.method);
+    	[context execute];
+    	NSLog(@"<-- Leaving  [%@:%@]", context.target, context.method);
+	}
+	@end
+	
+	@interface MyDemo : NSObject {
+		...
+		-(void)doDemo;
+		...
+	}
+	
+	@intercept(MyDemo,MethodLoggerInterceptor)
+	
+	@implementation MyDemo
+	...
+	// This method will be surrounded automatically with entering and leaving log messages.
+	-(void)doDemo {
+    	...
+	}
+	...
+	@end
+
 ## Usage
 
 To run the example project; clone the repo, and run `pod install` from the Project directory first.
 
-## Requirements
+The injected elements are accessable after the initialization methods `(init...)`.
 
-No other requirements.
+## Limitation
+
+***CDI is under development and there still may be some unknown issues.***
+
+**Known issues are:**
+
+* Subclasses of UIViewController currently do not support interception.
+* Compatibility problems with OCMock
+
+Please report issues [here](https://github.com/real-prometheus/CDI/issues).
 
 ## Installation
 
@@ -92,8 +149,7 @@ it simply add the following line to your Podfile:
 
     pod "CDI"
     
-CDI has to be enabled before it can be used for development. Open the `AppDelegate.m` add
-the following `initialize` method to the implementation:
+CDI has to be enabled before it can be used for development. Open the `AppDelegate.m` *(or any similar class which is executed at the beginning of the application)* and add the following `initialize` method to the implementation:
 
 	#import "AppDelegate.h"
 	#import <CDI.h>
@@ -113,4 +169,4 @@ the following `initialize` method to the implementation:
 
 ## License
 
-CDI is available under the MIT license. See the LICENSE file for more info.
+CDI is available under the MIT license. See the LICENSE file for more information.

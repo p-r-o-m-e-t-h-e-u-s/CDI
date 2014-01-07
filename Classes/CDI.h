@@ -25,6 +25,23 @@
 #import "CDIInterceptor.h"
 #import "CDIInjector.h"
 
-
+/**
+* CDI is the main class of the context and dependency injection implementation. CDI has to be initialized properly and
+* it is recommended to execute it at the beginning of the application code.
+*
+    @textblock
+    + (void)initialize {
+       [super initialize];
+       // Enable context and dependency injection
+       [CDI initialize];
+    }
+    @/textblock
+*/
 @interface CDI : NSObject
+
+/**
+ * Initialize will replace the init implementation of NSObject.
+ */
++ (void)initialize;
+
 @end

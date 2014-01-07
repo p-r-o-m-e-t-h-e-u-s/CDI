@@ -25,8 +25,14 @@
 
 @protocol MySample1Service <NSObject>
 
--(NSString*)getStatus;
+/**
+ * Return the status of the service as string.
+ */
+- (NSString *)getStatus;
 
--(NSNumber*)count;
+/**
+ * Return the count of status calls.
+ */
+- (NSNumber *)count;
 
 @end

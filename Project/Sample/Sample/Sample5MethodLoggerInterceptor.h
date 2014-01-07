@@ -24,5 +24,8 @@
 #import <Foundation/Foundation.h>
 #import <CDI/CDI.h>
 
+/**
+* @see invoke:
+*/
 @interface Sample5MethodLoggerInterceptor : CDIInterceptor
 @end

@@ -25,13 +25,18 @@
 
 @implementation Sample5TimeInterceptor
 
--(void)invoke:(CDIInvocationContext *)context {
-    // Invoke the called method
+/**
+* Measure the execution time of the method and log it to the console.
+*/
+- (void)invoke:(CDIInvocationContext *)context {
+    // Get the start time
     NSDate *startTime = [NSDate new];
+    // Call the next interceptor or execute the method, if there is no other interceptor
     [context execute];
+    // Create the time difference
     NSTimeInterval diff = [[NSDate new] timeIntervalSinceDate:startTime];
     // Log time output
-    NSLog(@"Executed [%@ %@] in %fs",context.target, context.method, diff);
+    NSLog(@"Executed [%@ %@] in %fs", context.target, context.method, diff);
 }
 
 @end

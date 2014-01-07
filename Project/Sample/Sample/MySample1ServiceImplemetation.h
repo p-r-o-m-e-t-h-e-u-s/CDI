@@ -24,6 +24,14 @@
 #import <Foundation/Foundation.h>
 #import "MySample1Service.h"
 
+/**
+* This sample service fetches the status of the github.com service.
+*/
 @interface MySample1ServiceImplemetation : NSObject <MySample1Service>
-@property(nonatomic,readonly) NSNumber *count;
+
+/**
+ * Count is counting the getService calls and has to be provided to satisfy the service protocol.
+ */
+@property(nonatomic, readonly) NSNumber *count;
+
 @end

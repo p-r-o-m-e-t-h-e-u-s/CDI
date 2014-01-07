@@ -34,7 +34,7 @@
  * it to the instance variable of a class.
  *
  * Use:
- * @inject(variable);
+ * @inject(instanceVariable);
  *
  */
 #define inject(instanceVariableName,...) synthesize instanceVariableName;\
@@ -47,7 +47,7 @@
 @end
 
 /**
- * Context and dependency injection.
+ * CDIInjector is responsible to perform the instance creation and assignment to the variable.
  */
 @interface CDIInjector : NSObject
 

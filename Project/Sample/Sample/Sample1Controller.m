@@ -23,19 +23,16 @@
 #import "Sample1Controller.h"
 #import "CDIInjector.h"
 
-@interface Sample1Controller ()
-
-@end
-
 @implementation Sample1Controller
 
-@synthesize status, count;
-
+// Inject the sample service implementation automatically
 @inject(sampleService);
 
 - (IBAction)doIt:(id)sender {
-    status = [sampleService getStatus];
-    count = [sampleService count];
+    // Call the service methods
+    NSString *status = [sampleService getStatus];
+    NSNumber *count = [sampleService count];
+    // Log the output to console and text area
     NSLog(@"Sample service says: Count %@ -> %@", count, status);
     _logArea.text = [_logArea.text stringByAppendingFormat:@"\nCount %@: github.com status is %@", count, status];
 }

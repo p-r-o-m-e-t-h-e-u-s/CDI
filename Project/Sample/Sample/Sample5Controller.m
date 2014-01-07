@@ -22,33 +22,31 @@
 //
 
 #import "Sample5Controller.h"
-#import <CDI/CDI.h>
 #import "Sample5TimeInterceptor.h"
 #import "Sample5MethodLoggerInterceptor.h"
 
-@intercept(Demo,Sample5MethodLoggerInterceptor)
-@intercept(Demo,Sample5TimeInterceptor)
+// Add the interceptor to the Demo class
+@intercept(Demo, Sample5MethodLoggerInterceptor)
+@intercept(Demo, Sample5TimeInterceptor)
 
 @implementation Demo
 
--(void)doDemo {
+/**
+ * This method is surrounded by interceptors.
+ */
+- (void)doDemo {
     NSLog(@"Demo is performed!");
 }
 
 @end
 
-@interface Sample5Controller ()
-
-@end
-
-@intercept(Sample5Controller,Sample5MethodLoggerInterceptor)
-    // @intercept(Sample5Controller,Sample5Interceptor)
-
 @implementation Sample5Controller
 
+// Inject the demo instance.
 @inject(demo);
 
 - (IBAction)doIt:(id)sender {
+    // Call the interceptors and the doDemo method.
     [demo doDemo];
 }
 @end

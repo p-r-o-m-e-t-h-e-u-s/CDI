@@ -23,11 +23,23 @@
 #import <UIKit/UIKit.h>
 #import "MySample1Service.h"
 
-@interface Sample1Controller : UIViewController {
-}
-@property(nonatomic) id<MySample1Service> sampleService;
-@property(nonatomic) NSString *status;
-@property(nonatomic) NSNumber *count;
-@property (weak, nonatomic) IBOutlet UITextView *logArea;
+/**
+ * The sample controller which is used for the interaction and visualization of the view.
+ */
+@interface Sample1Controller : UIViewController
+
+/**
+ * Reference to the sample service application.
+ */
+@property(nonatomic) id <MySample1Service> sampleService;
+
+/**
+ * This text area is used to log some output.
+ */
+@property(weak, nonatomic) IBOutlet UITextView *logArea;
+
+/**
+ * DoIt is called when the button pressed.
+ */
 - (IBAction)doIt:(id)sender;
 @end

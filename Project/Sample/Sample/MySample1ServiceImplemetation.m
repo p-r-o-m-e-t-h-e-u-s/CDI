@@ -28,13 +28,19 @@
 
 @implementation MySample1ServiceImplemetation
 
+// Inject the count instance
 @inject(count);
 
-// https://status.github.com/api/status.json
--(NSString*)getStatus {
+/**
+ * Return the status of the github.com service as string and increment the count.
+ */
+- (NSString *)getStatus {
+    // Increment the count and assign a new value
     count = [NSNumber numberWithInt:[count intValue] + 1];
-    NSError* error;
-    NSString* htmlData = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:@"https://status.github.com/api/status.json"] encoding:NSUTF8StringEncoding error:&error];
+    // Execute the remote call
+    NSError *error;
+    NSString *htmlData = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:@"https://status.github.com/api/status.json"] encoding:NSUTF8StringEncoding error:&error];
+    // Return the status
     return htmlData;
 }
 

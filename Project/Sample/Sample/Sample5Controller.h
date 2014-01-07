@@ -24,17 +24,31 @@
 #import <UIKit/UIKit.h>
 #import "CDIInjector.h"
 
+/**
+* The Demo class is used to test the interceptors.
+*/
 @interface Demo : NSObject
 
--(void)doDemo;
+/**
+* This method is surrounded by interceptors.
+*/
+- (void)doDemo;
 
 @end
 
-@interface Sample5Controller : UIViewController {
-}
+/**
+ * The sample controller which is used for the interaction and visualization of the view.
+ */
+@interface Sample5Controller : UIViewController
 
+/**
+ * The Demo class which is used for testing.
+ */
 @property(nonatomic) Demo *demo;
 
+/**
+ * DoIt is called when the button pressed.
+ */
 - (IBAction)doIt:(id)sender;
 
 @end

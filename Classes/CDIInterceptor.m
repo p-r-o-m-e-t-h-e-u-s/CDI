@@ -22,7 +22,6 @@
 //
 
 #import "CDIInterceptor.h"
-#import <objc/runtime.h>
 
 @implementation CDIInvocationContext {
 
@@ -32,11 +31,14 @@
     NSInvocation *invocation;
 
     /**
-     * TODO
+     * An ordered list with interceptors which will be performed with the method execution.
      */
     NSArray *interceptors;
 
-    long count;
+    /**
+     * The index is the position of the interceptor calls in the chain.
+     */
+    long index;
 }
 
 @dynamic target, selector, method;
@@ -48,7 +50,7 @@
     if (self = [super init]) {
         invocation = anInvocation;
         interceptors = allInterceptors;
-        count = 0;
+        index = 0;
     }
     return self;
 }
@@ -69,8 +71,8 @@
  * Execute the method or call another interceptor in the chain.
  */
 - (void)execute {
-    if ([interceptors count] > count) {
-        CDIInterceptor *nextInterceptor = [interceptors objectAtIndex:count++];
+    if ([interceptors count] > index) {
+        CDIInterceptor *nextInterceptor = [interceptors objectAtIndex:index++];
         [nextInterceptor invoke:self];
     } else {
         [invocation invoke];
@@ -78,9 +80,12 @@
 }
 @end
 
-@implementation CDIInterceptor {
-}
+@implementation CDIInterceptor
 
+/**
+* Invoke is called before the methods execution and with context to perform surrounding functionality.
+* Call [context execute] to execute the next interception in the chain or to execute the defined method.
+*/
 - (void)invoke:(CDIInvocationContext *)context {
 }
 

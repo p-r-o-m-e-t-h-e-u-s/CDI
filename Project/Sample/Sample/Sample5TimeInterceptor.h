@@ -23,6 +23,8 @@
 
 #import "CDIInterceptor.h"
 
+/**
+* @see invoke:
+*/
 @interface Sample5TimeInterceptor : CDIInterceptor
-
 @end

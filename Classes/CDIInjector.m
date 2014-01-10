@@ -28,15 +28,18 @@
 @end
 
 @interface CDIInjector ()
+
 /**
- * Contains all loaded protocols from the runtime environment.
- */
+* Contains all loaded protocols from the runtime environment.
+*/
 @property(nonatomic, readwrite) NSDictionary *protocolCache;
+
 /**
- * Manual implementation bindings dictionary containing types as keys and
- * the implementation classes as values.
- */
+* Manual implementation bindings dictionary containing types as keys and
+* the implementation classes as values.
+*/
 @property(nonatomic, readonly) NSMutableDictionary *implementationBindings;
+
 @end
 
 @implementation CDIInjector
@@ -99,14 +102,14 @@
 }
 
 /**
- * For component auto-wiring the suitable implementation is search within all available classes.
- * The type of the implentation is one or more protocols, a class or an id.
- *
- * type = <NSCopying>
- * type = <NSCopying><NSCoding><NSObject>
- * type = NSDate
- * type = @
- */
+* For component auto-wiring the suitable implementation is search within all available classes.
+* The type of the implentation is one or more protocols, a class or an id.
+*
+* type = <NSCopying>
+* type = <NSCopying><NSCoding><NSObject>
+* type = NSDate
+* type = @
+*/
 - (Class)getClassForType:(NSString *)type {
 
     Class returnClass;
@@ -193,21 +196,21 @@
 #pragma mark Singleton implementation
 
 /**
- * Get the instance of the CDI singleton implementation.
- */
+* Get the instance of the CDI singleton implementation.
+*/
 + (instancetype)sharedInstance {
     static dispatch_once_t pred;
     static id shared = nil;
     dispatch_once(&pred, ^{
-        shared = [[super alloc] initUniqueInstance];
+        shared = [[super alloc] initSharedInstance];
     });
     return shared;
 }
 
 /**
- * Initializer method of the CDI singleton.
- */
-- (instancetype)initUniqueInstance {
+* Initializer method of the CDI singleton.
+*/
+- (instancetype)initSharedInstance {
 
     if (self = [super init]) {
 

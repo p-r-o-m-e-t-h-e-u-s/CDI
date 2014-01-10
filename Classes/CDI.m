@@ -24,29 +24,70 @@
 #import "CDI.h"
 
 #import <objc/runtime.h>
+#import "UIStoryboard+CDI.h"
 
 @implementation CDI
 
 #pragma mark Objective-C Integration
 
 /**
- * The initWithContextAndDependencyInjection method is called before the init with any other NSObject creation.
- * It will replace the @inject annotation with an instance and integrate the interceptors.
- */
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "InfiniteRecursion"
-- (id)initWithContextAndDependencyInjection {
+* This list contains all classes which will not be injected with interceptors.
+*/
+static NSMutableArray *interceptorClassFilter = nil;
 
-    NSMutableArray *interceptors = nil;
++ (id)performInstanceInitializationWithInterceptors:(id)reference {
+    return [CDI performInstanceInitializationWithInterceptors:reference ignoreFilter:NO];
+}
 
-    // Avoid unlimited loop - injection will not be available in the CDI implementation itself
-    if ([self isKindOfClass:[CDIInjector class]]) {
-        return self;
++ (id)performInstanceInitializationWithInterceptors:(id)reference ignoreFilter:(BOOL)ignoreInterceptorFilter {
+
+    // Some classes do special things while initialization.
+    if (ignoreInterceptorFilter || ![interceptorClassFilter containsObject:[reference class]]) {
+
+        NSMutableArray *interceptors = nil;
+
+        unsigned int methodIndex = 0;
+
+        Method *methods = class_copyMethodList([reference class], &methodIndex);
+
+        if (methods) {
+            while (methodIndex--) {
+
+                NSString *methodName = [NSString stringWithUTF8String:sel_getName(method_getName((methods[methodIndex])))];
+
+                // Check for interception injection
+                // -------------------------------------
+                if ([methodName hasPrefix:__INJECT_INTERCEPTOR]) {
+
+                    if (!interceptors) interceptors = [[NSMutableArray alloc] init];
+                    // Get the interceptor class name which is encoded in the method name
+                    NSString *interceptorClassName = [methodName substringFromIndex:[__INJECT_INTERCEPTOR length]];
+
+                    id interceptorClass = [[CDIInjector sharedInstance] getClassForType:interceptorClassName];
+                    // Create interceptor instance and add it to the beginning of the chain
+                    id interceptorInstance = [[interceptorClass alloc] init];
+                    [interceptors insertObject:interceptorInstance atIndex:0];
+                }
+            }
+            free((void *) methods);
+        }
+
+        // Process the interceptor injections
+        if (interceptors) {
+            // Some classes do special things while initialization.
+            reference = [[CDIInterceptorProxy alloc] initWithTarget:reference];
+            [reference setInterceptors:interceptors];
+        }
     }
+
+    return reference;
+}
+
++ (id)performInstanceInitializationWithInjectors:(id)reference {
 
     unsigned int methodIndex = 0;
 
-    Method *methods = class_copyMethodList([self class], &methodIndex);
+    Method *methods = class_copyMethodList([reference class], &methodIndex);
 
     if (methods) {
         while (methodIndex--) {
@@ -61,70 +102,60 @@
                     // In this case there is no assignment for a class which should be
                     // instantiated.
                     instanceVariableName = [instanceVariableName substringFromIndex:[__INJECT_TYPE_PREFIX length]];
-                    [[CDIInjector sharedInstance] createInstance:instanceVariableName inObject:self];
+                    [[CDIInjector sharedInstance] createInstance:instanceVariableName inObject:reference];
                 } else {
                     // Extract the type and instance variable name
                     NSUInteger prefixLocation = [instanceVariableName rangeOfString:__INJECT_TYPE_PREFIX].location;
                     NSString *type = [instanceVariableName substringToIndex:prefixLocation];
                     instanceVariableName = [instanceVariableName substringFromIndex:[__INJECT_TYPE_PREFIX length] + prefixLocation];
                     // A class was defined as the type for the variable instantiation.
-                    [[CDIInjector sharedInstance] createInstance:instanceVariableName inObject:self ofType:type];
+                    [[CDIInjector sharedInstance] createInstance:instanceVariableName inObject:reference ofType:type];
                 }
-            }
-
-            // Check for interception injection
-            // -------------------------------------
-            if ([methodName hasPrefix:__INJECT_INTERCEPTOR]) {
-
-                if (!interceptors) interceptors = [[NSMutableArray alloc] init];
-                // Get the interceptor class name which is encoded in the method name
-                NSString *interceptorClassName = [methodName substringFromIndex:[__INJECT_INTERCEPTOR length]];
-
-                id interceptorClass = [[CDIInjector sharedInstance] getClassForType:interceptorClassName];
-                // Create interceptor instance and add it to the beginning of the chain
-                id interceptorInstance = [[interceptorClass alloc] init];
-                [interceptors insertObject:interceptorInstance atIndex:0];
             }
         }
         free((void *) methods);
     }
 
-    // Now call the init (remember init was renamed to initWithContextAndDependencyInjection)
-    id returnSelf = [self initWithContextAndDependencyInjection];
-
-    // Process the interceptor injections
-    if (interceptors) {
-        // Some classes do special things while initialization.
-        if (![self isKindOfClass:[UIViewController class]]) {
-            returnSelf = [[CDIInterceptorProxy alloc] initWithTarget:returnSelf];
-            [returnSelf setInterceptors:interceptors];
-        }
-    }
-
-    return returnSelf;
+    return reference;
 }
 
-#pragma clang diagnostic pop
+/**
+* The new init method for NSObject.
+*
+* @return A reference containing injected instance variables and interceptors.
+*/
+- (id)initCDI {
+    self = [CDI performInstanceInitializationWithInjectors:self];
+    self = [self initCDI];
+    self = [CDI performInstanceInitializationWithInterceptors:self];
+    return self;
+}
 
 /**
- * Swap the implementation of the [NSObject init] with [CDIInjector initWithContextAndDependencyInjection].
- */
+* Swap the implementation of the [NSObject init] with [CDI initCDI].
+*/
 + (void)swapInit {
 
     Method initMethod = class_getInstanceMethod([NSObject class], @selector(init));
-    Method doInjectMethod = class_getInstanceMethod([CDI class], @selector(initWithContextAndDependencyInjection));
+    Method initCDIMethod = class_getInstanceMethod([CDI class], @selector(initCDI));
+    if (class_addMethod([NSObject class], @selector(initCDI), method_getImplementation(initMethod), method_getTypeEncoding(initMethod))) {
+        method_exchangeImplementations(initMethod, initCDIMethod);
+    }
 
-    if (class_addMethod([NSObject class], @selector(initWithContextAndDependencyInjection), method_getImplementation(initMethod), method_getTypeEncoding(initMethod))) {
-        method_exchangeImplementations(initMethod, doInjectMethod);
+    [UIStoryboard swapInit];
+
+}
+
++ (void)addInterceptorClassFilter:(Class)aClass {
+    @synchronized (self) {
+        [interceptorClassFilter addObject:aClass];
     }
 }
 
-/**
- * Initialize will replace the init implementation of NSObject.
- */
 + (void)initialize {
     static dispatch_once_t onceToken = 0;
     dispatch_once(&onceToken, ^{
+        interceptorClassFilter = [[NSMutableArray alloc] init];
         [CDI swapInit];
     });
 }

@@ -30,65 +30,65 @@
 #define __INJECT_TYPE_PREFIX @"__inject_type__"
 
 /**
- * The inject macro which is used to create an instance and assign
- * it to the instance variable of a class.
- *
- * Use:
- * @inject(instanceVariable);
- *
- */
+* The inject macro which is used to create an instance and assign
+* it to the instance variable of a class.
+*
+* Use:
+* @inject(instanceVariable);
+*
+*/
 #define inject(instanceVariableName,...) synthesize instanceVariableName;\
 -(void) __inject_instance__ ## __VA_ARGS__ ## __inject_type__ ## instanceVariableName {}
 
 /**
- * CDIException are thrown by the cdi implementation whenever a unrecoverable situation occurs.
- */
+* CDIException are thrown by the cdi implementation whenever a unrecoverable situation occurs.
+*/
 @interface CDIException : NSException
 @end
 
 /**
- * CDIInjector is responsible to perform the instance creation and assignment to the variable.
- */
+* CDIInjector is responsible to perform the instance creation and assignment to the variable.
+*/
 @interface CDIInjector : NSObject
 
 /**
- * Create an object and assign it to the instance variable.
- */
+* Create an object and assign it to the instance variable.
+*/
 - (void)createInstance:(NSString *)variableName inObject:(id)instance;
 
 /**
- * Create an object of a specific type and assign it to the instance variable.
- */
+* Create an object of a specific type and assign it to the instance variable.
+*/
 - (void)createInstance:(NSString *)variableName inObject:(id)object ofType:(NSString *)type;
 
 /**
- * Bind the instance variable class type with an implementation class to override the auto-wiring.
- * Using this will allow a manual wiring, which is suitable for replacing implementation
- * with mocking objects.
- */
+* Bind the instance variable class type with an implementation class to override the auto-wiring.
+* Using this will allow a manual wiring, which is suitable for replacing implementation
+* with mocking objects.
+*/
 - (void)bindClass:(Class)instanceVaiableType with:(Class)implementationClass;
 
 /**
- * Bind the instance variable protocol type with an implementation class to override the auto-wiring.
- * Using this will allow a manual wiring, which is suitable for replacing implementation
- * with mocking objects.
- */
+* Bind the instance variable protocol type with an implementation class to override the auto-wiring.
+* Using this will allow a manual wiring, which is suitable for replacing implementation
+* with mocking objects.
+*/
 - (void)bindProtocol:(Protocol *)instanceVaiableProtocolType with:(Class)implementationClass;
 
 /**
- * Get the instance of this CDI implementation.
- */
+* Get the instance of this CDI implementation.
+*/
 + (instancetype)sharedInstance;
 
 /**
- * For component auto-wiring the suitable implementation is search within all available classes.
- * The type of the implentation is one or more protocols, a class or an id.
- *
- * type = <NSCopying>
- * type = <NSCopying><NSCoding><NSObject>
- * type = NSDate
- * type = @
- */
+* For component auto-wiring the suitable implementation is search within all available classes.
+* The type of the implentation is one or more protocols, a class or an id.
+*
+* type = <NSCopying>
+* type = <NSCopying><NSCoding><NSObject>
+* type = NSDate
+* type = @
+*/
 - (Class)getClassForType:(NSString *)type;
 
 // clue for improper use (produces compile time error)

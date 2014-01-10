@@ -24,14 +24,14 @@
 #import <Foundation/Foundation.h>
 
 #define __INJECT_INTERCEPTOR @"__INJECT_INTERCEPTOR__"
-#define __INJECT_METHOD @"__INJECT_METHOD__"
+
 
 /**
- * TODO
- *
- * Use:
- * @intercept(name,interceptor)
- */
+* Define the injection of the interceptor.
+*
+* Use:
+* @intercept(name,interceptor)
+*/
 #define intercept(name,interceptor) interface name (ContextAndDependencyInjectionInterceptor_ ## interceptor)\
 @property (nonatomic, readonly) interceptor * __INJECT_INTERCEPTOR__ ## interceptor;\
 @end\
@@ -45,13 +45,24 @@
 @class CDIInterceptor;
 
 /**
- * TODO
- */
+* The CDIInvocationContext provides all data which is used in the interceptors.
+*/
 @interface CDIInvocationContext : NSObject {
 }
 
+/**
+* The target / instance of the method call.
+*/
 @property(nonatomic, readonly) id target;
+
+/**
+* The selector of the method call.
+*/
 @property(nonatomic, readonly) SEL selector;
+
+/**
+* The name of the selector of the method call.
+*/
 @property(nonatomic, readonly) NSString *method;
 
 /**
@@ -66,19 +77,29 @@
 
 @end
 
+/**
+* An interceptor has to extend CDIInterceptor and can be injected with @interceptor(MyClass,MyInterceptor).
+*/
 @interface CDIInterceptor : NSObject
 /**
- * Invoke is called for any registred interceptor for method call
+ * Invoke is called for any registered interceptor for method call.
  */
 - (void)invoke:(CDIInvocationContext *)context;
 @end
 
-@interface CDIInterceptorProxy : NSProxy {
-}
+/**
+* A proxy will be created whenever a interceptors are used.
+*/
+@interface CDIInterceptorProxy : NSProxy
 
-@property(nonatomic) NSArray *interceptors;
+/**
+* A list with a all interceptors which will called before the the method execution.
+*/
+@property(nonatomic, retain) NSArray *interceptors;
 
+/**
+* Initialize with the reference which will be replaced by this proxy.
+*/
 - (id)initWithTarget:(id)aTarget;
-
 
 @end

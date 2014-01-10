@@ -21,35 +21,13 @@
 //    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "Sample5Controller.h"
-#import "Sample5TimeInterceptor.h"
-#import "Sample5MethodLoggerInterceptor.h"
+#import "UIViewController+CDI.h"
+#import "CDI.h"
 
-// Add the interceptor to the Demo class
-@intercept(Demo, Sample5MethodLoggerInterceptor);
-@intercept(Demo, Sample5TimeInterceptor);
+@implementation UIViewController (CDI)
 
-@implementation Demo
-
-/**
- * This method is surrounded by interceptors.
- */
-- (void)doDemo {
-    NSLog(@"Demo is performed! %@", self);
++ (void)initialize {
+    [CDI addInterceptorClassFilter:[self class]];
+    [super initialize];
 }
-
-@end
-
-@intercept(Sample5Controller, Sample5MethodLoggerInterceptor);
-
-@implementation Sample5Controller
-
-// Inject the demo instance.
-@inject(demo);
-
-- (IBAction)doIt:(id)sender {
-    // Call the interceptors and the doDemo method.
-    [demo doDemo];
-}
-
 @end

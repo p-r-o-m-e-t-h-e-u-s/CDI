@@ -1,5 +1,5 @@
 PODS:
-  - CDI (1.0.0-beta)
+  - CDI (1.0.0-beta2)
 
 DEPENDENCIES:
   - CDI (from `../`)
@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  CDI: b85c36ccb1d5cd623b567b16725acfe771aed8e8
+  CDI: 82494afc50563dd3df0a8e204f98a05529fb3f7f
 
-COCOAPODS: 0.28.0
+COCOAPODS: 0.29.0

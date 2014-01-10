@@ -40,8 +40,40 @@
 @interface CDI : NSObject
 
 /**
- * Initialize will replace the init implementation of NSObject.
- */
+* Perform initialization of an instance and inject all interceptors except if the reference is a filtered class type.
+*
+* @param reference The instance which is used to add the interceptors.
+* @return A reference with added interceptors.
+*/
++ (id)performInstanceInitializationWithInterceptors:(id)reference;
+
+/**
+* Perform initialization of an instance and inject all interceptors.
+*
+* @param reference The instance which is used to add the interceptors.
+* @param ignoreInterceptorFilter YES to ignore the filter and force the injections of the interceptors.
+* @return A reference with injected interceptors.
+*/
++ (id)performInstanceInitializationWithInterceptors:(id)reference ignoreFilter:(BOOL)ignoreInterceptorFilter;
+
+/**
+* Perform initialization of an instance and inject all interceptors except if the reference is a filtered class type.
+*
+* @param reference The instance which is used to add the interceptors.
+* @return A reference with injected instance variables.
+*/
++ (id)performInstanceInitializationWithInjectors:(id)reference;
+
+/**
+* Add a class to the interceptor filter, which will prevent adding interceptors to instances of the given class types.
+*
+* @param class The class which will be added to the filter.
+*/
++ (void)addInterceptorClassFilter:(Class)class;
+
+/**
+* Initialize will replace the init implementation of classes like NSObject.
+*/
 + (void)initialize;
 
 @end

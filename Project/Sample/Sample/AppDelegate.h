@@ -27,6 +27,9 @@
 */
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
+/**
+* Reference to the main windows, which is used to display the sample client.
+*/
 @property(strong, nonatomic) UIWindow *window;
 
 @end

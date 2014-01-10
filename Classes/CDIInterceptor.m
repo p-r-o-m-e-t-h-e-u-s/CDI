@@ -113,7 +113,7 @@
 }
 
 - (BOOL)respondsToSelector:(SEL)aSelector {
-    return [target respondsToSelector:aSelector] ? YES : [super respondsToSelector:aSelector];
+    return [target respondsToSelector:aSelector] || [super respondsToSelector:aSelector];
 }
 
 - (void)forwardInvocation:(NSInvocation *)invocation {

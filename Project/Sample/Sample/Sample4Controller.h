@@ -20,26 +20,26 @@
 //    IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 //    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-
-#import "MySample1ServiceImplemetation.h"
-#import "CDIInjector.h"
-
-@implementation MySample1ServiceImplemetation
-
-// Inject the count instance
-@inject(count);
+#import <UIKit/UIKit.h>
+#import "MySample4Service.h"
 
 /**
- * Return the status of the github.com service as string and increment the count.
+ * The sample controller which is used for the interaction and visualization of the view.
  */
-- (NSString *)getStatus {
-    // Increment the count and assign a new value
-    count = [NSNumber numberWithInt:[count intValue] + 1];
-    // Execute the remote call
-    NSError *error;
-    NSString *htmlData = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:@"https://status.github.com/api/status.json"] encoding:NSUTF8StringEncoding error:&error];
-    // Return the status
-    return htmlData;
-}
+@interface Sample4Controller : UIViewController
 
+/**
+ * Reference to the sample service application.
+ */
+@property(nonatomic) id <MySample4Service> sampleService;
+
+/**
+ * This text area is used to log some output.
+ */
+@property(weak, nonatomic) IBOutlet UITextView *logArea;
+
+/**
+ * DoIt is called when the button pressed.
+ */
+- (IBAction)doIt:(id)sender;
 @end

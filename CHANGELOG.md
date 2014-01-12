@@ -2,6 +2,16 @@
 
 ---
 
+## 1.0.0-beta3
+
+###### Release Date: 12.01.2014
+
+* Documentation and samples updated.
+* Added Sample 4
+* Fixed interception issues with UIViewController classes	
+	
+---
+
 ## 1.0.0-beta2
 
 ###### Release Date: 06.01.2014

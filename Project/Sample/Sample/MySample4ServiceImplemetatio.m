@@ -21,10 +21,13 @@
 //    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "MySample1ServiceImplemetation.h"
+#import "MySample4ServiceImplemetation.h"
 #import "CDIInjector.h"
 
-@implementation MySample1ServiceImplemetation
+// Define MySample4ServiceImplemetation as a singleton
+@singleton(MySample4ServiceImplemetation);
+
+@implementation MySample4ServiceImplemetation
 
 // Inject the count instance
 @inject(count);

@@ -21,25 +21,18 @@
 //    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "MySample1ServiceImplemetation.h"
-#import "CDIInjector.h"
+#import <Foundation/Foundation.h>
 
-@implementation MySample1ServiceImplemetation
-
-// Inject the count instance
-@inject(count);
+@protocol MySample4Service <NSObject>
 
 /**
- * Return the status of the github.com service as string and increment the count.
+ * Return the status of the service as string.
  */
-- (NSString *)getStatus {
-    // Increment the count and assign a new value
-    count = [NSNumber numberWithInt:[count intValue] + 1];
-    // Execute the remote call
-    NSError *error;
-    NSString *htmlData = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:@"https://status.github.com/api/status.json"] encoding:NSUTF8StringEncoding error:&error];
-    // Return the status
-    return htmlData;
-}
+- (NSString *)getStatus;
+
+/**
+ * Return the count of status calls.
+ */
+- (NSNumber *)count;
 
 @end

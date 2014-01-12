@@ -30,6 +30,10 @@
 		33DC39FC1866F3A000235A63 /* CDITest.m in Sources */ = {isa = PBXBuildFile; fileRef = 33DC39FB1866F3A000235A63 /* CDITest.m */; };
 		33DC3A871867A5FD00235A63 /* MySample1ServiceImplemetation.m in Sources */ = {isa = PBXBuildFile; fileRef = 33DC3A861867A5FD00235A63 /* MySample1ServiceImplemetation.m */; };
 		D700B6C001E64CA29408C7FE /* libPods-SampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D072CC990AAD4DBAAE0E7197 /* libPods-SampleTests.a */; };
+		FCDDF69F1352ACC960CF9CCD /* MySample4ServiceImplemetatio.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDDF5F92587E5C36AA5B841 /* MySample4ServiceImplemetatio.m */; };
+		FCDDF7D76A4A420E7B149A1B /* Sample4Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDDF34EF6A9A7926A218E41 /* Sample4Controller.m */; };
+		FCDDFB4F0C70D9D23B45B053 /* MySample4ServiceImplemetatio.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDDF5F92587E5C36AA5B841 /* MySample4ServiceImplemetatio.m */; };
+		FCDDFC33311868D8E9D89642 /* Sample4Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDDF34EF6A9A7926A218E41 /* Sample4Controller.m */; };
 		FCDDFE5065DD2755A93EBAE2 /* Sample5MethodLoggerInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = FCDDFC8F1046927968E15937 /* Sample5MethodLoggerInterceptor.m */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +80,11 @@
 		B63DAA6991DD41248233B144 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D072CC990AAD4DBAAE0E7197 /* libPods-SampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3871E6378834DA2B8AC56F1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		FCDDF16C3F5879D3213FBDC1 /* MySample4ServiceImplemetation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySample4ServiceImplemetation.h; sourceTree = "<group>"; };
+		FCDDF203D643C49F21D3ED6A /* MySample4Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySample4Service.h; sourceTree = "<group>"; };
+		FCDDF34EF6A9A7926A218E41 /* Sample4Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample4Controller.m; sourceTree = "<group>"; };
+		FCDDF3C6BC72201D73066267 /* Sample4Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample4Controller.h; sourceTree = "<group>"; };
+		FCDDF5F92587E5C36AA5B841 /* MySample4ServiceImplemetatio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySample4ServiceImplemetatio.m; sourceTree = "<group>"; };
 		FCDDF7AA5BC97A75E4E25316 /* Sample5MethodLoggerInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample5MethodLoggerInterceptor.h; sourceTree = "<group>"; };
 		FCDDFC8F1046927968E15937 /* Sample5MethodLoggerInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample5MethodLoggerInterceptor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,6 +185,7 @@
 				33DC39D81866F1B200235A63 /* Main_iPad.storyboard */,
 				33DC39DE1866F1B200235A63 /* Images.xcassets */,
 				33DC39CA1866F1B200235A63 /* Supporting Files */,
+				FCDDFF50C1BF82FC5F6DB7CC /* Sample4 */,
 			);
 			path = Sample;
 			sourceTree = "<group>";
@@ -208,6 +218,18 @@
 				33DC39EE1866F1B200235A63 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FCDDFF50C1BF82FC5F6DB7CC /* Sample4 */ = {
+			isa = PBXGroup;
+			children = (
+				FCDDF34EF6A9A7926A218E41 /* Sample4Controller.m */,
+				FCDDF3C6BC72201D73066267 /* Sample4Controller.h */,
+				FCDDF16C3F5879D3213FBDC1 /* MySample4ServiceImplemetation.h */,
+				FCDDF5F92587E5C36AA5B841 /* MySample4ServiceImplemetatio.m */,
+				FCDDF203D643C49F21D3ED6A /* MySample4Service.h */,
+			);
+			name = Sample4;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -382,6 +404,8 @@
 				33DC3A871867A5FD00235A63 /* MySample1ServiceImplemetation.m in Sources */,
 				33DC39D01866F1B200235A63 /* main.m in Sources */,
 				FCDDFE5065DD2755A93EBAE2 /* Sample5MethodLoggerInterceptor.m in Sources */,
+				FCDDFC33311868D8E9D89642 /* Sample4Controller.m in Sources */,
+				FCDDF69F1352ACC960CF9CCD /* MySample4ServiceImplemetatio.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +417,8 @@
 				33C9904E186BAF7900A6C0BE /* Sample5TimeInterceptor.m in Sources */,
 				33DC39F21866F1B200235A63 /* Sample1ControllerTests.m in Sources */,
 				33C9904A186BAB6800A6C0BE /* Sample5Controller.m in Sources */,
+				FCDDF7D76A4A420E7B149A1B /* Sample4Controller.m in Sources */,
+				FCDDFB4F0C70D9D23B45B053 /* MySample4ServiceImplemetatio.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

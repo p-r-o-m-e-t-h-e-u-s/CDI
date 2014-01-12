@@ -1,7 +1,7 @@
 CDI
 ===
 
-Context and Dependency Injection for Objective C
+Context and Dependency Injection for Objective-C
 
 [![Version](https://cocoapod-badges.herokuapp.com/v/CDI/badge.png)](http://cocoadocs.org/docsets/CDI)
 [![Platform](https://cocoapod-badges.herokuapp.com/p/CDI/badge.png)](http://cocoadocs.org/docsets/CDI)
@@ -19,7 +19,7 @@ The main features are:
 
 Using CDI will reduce the boilerplate code in many classes, increase readability and allow better testing. The interception functionality will also provide the ability to separate the implementation code by aspects like security, logging and other facets.
 
-CDI does not depend on another framework, which means you can use any unit testing, mocking or other framework *(see Limitation chapter)*. Code samples are provided for XCTest.
+CDI does not depend on another framework, which means you can use any unit testing, mocking or other framework *(see Limitation chapter)*.
 
 Here are some samples:
 
@@ -103,7 +103,14 @@ Here are some samples:
 ...
 @end
 ```
-    
+
+**Full Sample Code:**
+
+* [Service Protocol](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/MySample4Service.h)
+* [Specific Service Interface](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/MySample4ServiceImplemetation.h)
+* [Specific Service Implementation](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/MySample4ServiceImplemetation.m)
+* [Sample Controller](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/Sample4Controller.m)
+
 #### Simple manual binding
     
 ```objc

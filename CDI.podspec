@@ -1,20 +1,20 @@
 Pod::Spec.new do |s|
   s.name         = "CDI"
-  s.version      = "1.0.0-beta2"
-  s.summary      = "Simple, easy and very powerful way to use context and dependency injection and interception (minimalistic AOP) for objective c development."
+  s.version      = "1.0.0-beta3"
+  s.summary      = "Simple, easy and very powerful way to use context and dependency injection and interception (minimalistic AOP) for Objective-C development."
   s.description  = <<-DESC
-                    Simple, easy and very powerful way to use context and dependency injection and interception for objective c development. CDI is designed to solve some common software development patterns like Dependency Injection / Inversion of Control, Singleton and Interception (an minimalistic AOP support).
+                    Simple, easy and very powerful way to use context and dependency injection and interception for Objective-C development. CDI is designed to solve some common software development patterns like Dependency Injection / Inversion of Control, Singleton and Interception (an minimalistic AOP approach).
 
 					The main features are:
 
 					* Injection by annotation
 					* Component auto-wiring
 					* Manual object binding
-					* Easy singleton support
-					* Interception support
+					* Singleton by annotation
+					* Interception by annotation
 
 					Using CDI will reduce the boilerplate code in many classes, increase readability and allow better testing. The intreception functionality will also provide the ability to separate the implementation code by aspects like security, logging and other facets.
-					CDI does not depend on another framework, which means you can use any unit testing, mocking or other framework (see Limitation chapter). Code samples are provided for XCTest.
+					CDI does not depend on another framework, which means you can use any unit testing, mocking or other framework (see Limitation chapter).
                    DESC
   s.homepage     = "https://github.com/real-prometheus/CDI"
   # s.screenshots  = "www.example.com/screenshots_1", "www.example.com/screenshots_2"

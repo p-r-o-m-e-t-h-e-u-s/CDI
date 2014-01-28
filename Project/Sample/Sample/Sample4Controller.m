@@ -29,12 +29,12 @@
 @inject(sampleService);
 
 - (IBAction)doIt:(id)sender {
-    // Call the service methods
-    NSString *status = [sampleService getStatus];
-    NSNumber *count = [sampleService count];
-    // Log the output to console and text area
-    NSLog(@"Sample service says: Count %@ -> %@", count, status);
-    _logArea.text = [_logArea.text stringByAppendingFormat:@"\nCount %@: github.com status is %@", count, status];
+  // Call the service methods
+  NSString *status = [sampleService getStatus];
+  NSNumber *count = [sampleService count];
+  // Log the output to console and text area
+  NSLog(@"Sample service says: Count %@ -> %@", count, status);
+  _logArea.text = [_logArea.text stringByAppendingFormat:@"\nCount %@: github.com status is %@", count, status];
 }
 
 @end

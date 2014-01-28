@@ -35,7 +35,7 @@
  * This method is surrounded by interceptors.
  */
 - (void)doDemo {
-    NSLog(@"Demo is performed! %@", self);
+  NSLog(@"Demo is performed! %@", self);
 }
 
 @end
@@ -48,8 +48,8 @@
 @inject(demo);
 
 - (IBAction)doIt:(id)sender {
-    // Call the interceptors and the doDemo method.
-    [demo doDemo];
+  // Call the interceptors and the doDemo method.
+  [demo doDemo];
 }
 
 @end

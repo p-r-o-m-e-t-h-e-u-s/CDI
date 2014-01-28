@@ -24,7 +24,7 @@
 #import <XCTest/XCTest.h>
 #import "CDIInjector.h"
 #import "Sample1Controller.h"
-#import "MySample1ServiceImplemetation.h"
+#import "MySample1ServiceImplementation.h"
 
 @interface Sample1ControllerTests : XCTestCase
 @property Sample1Controller *controller;

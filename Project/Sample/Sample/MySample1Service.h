@@ -23,6 +23,10 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+* This service protocol is used for implementations which provide a status and counts
+* the status calls.
+*/
 @protocol MySample1Service <NSObject>
 
 /**

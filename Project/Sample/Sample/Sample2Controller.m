@@ -20,18 +20,24 @@
 //    IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 //    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
+#import "Sample2Controller.h"
+#import "CDIInjector.h"
+#import "MySample2ServiceDummy.h"
 
-#import <Foundation/Foundation.h>
-#import "MySample1Service.h"
+@implementation Sample2Controller
 
-/**
-* This sample service fetches the status of the github.com service.
-*/
-@interface MySample1ServiceImplemetation : NSObject <MySample1Service>
+// In this case, there are multiple implementations (MySample2ServiceDummy and
+// MySample2ServiceImplementation) which would fulfill the MySample2Service.
+// Inject the sample service implementation manually, otherwise you will get an runtime exception.
+@inject(sampleService,MySample2ServiceDummy);
 
-/**
- * Count is counting the getService calls and has to be provided to satisfy the service protocol.
- */
-@property(nonatomic, readonly) NSNumber *count;
+- (IBAction)doIt:(id)sender {
+  // Call the service methods
+  NSString *status = [sampleService getStatus];
+  NSNumber *count = [sampleService count];
+  // Log the output to console and text area
+  NSLog(@"Sample service says: Count %@ -> %@", count, status);
+  _logArea.text = [_logArea.text stringByAppendingFormat:@"\nCount %@: github.com status is %@", count, status];
+}
 
 @end

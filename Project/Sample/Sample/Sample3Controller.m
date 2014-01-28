@@ -20,29 +20,20 @@
 //    IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 //    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-
-#import "MySample4ServiceImplemetation.h"
+#import "Sample3Controller.h"
 #import "CDIInjector.h"
 
-// Define MySample4ServiceImplemetation as a singleton
-@singleton(MySample4ServiceImplemetation);
+@implementation Sample3Controller
 
-@implementation MySample4ServiceImplemetation
+// Inject the an instance of NSDate
+@inject(now);
 
-// Inject the count instance
-@inject(count);
-
-/**
- * Return the status of the github.com service as string and increment the count.
- */
-- (NSString *)getStatus {
-    // Increment the count and assign a new value
-    count = [NSNumber numberWithInt:[count intValue] + 1];
-    // Execute the remote call
-    NSError *error;
-    NSString *htmlData = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:@"https://status.github.com/api/status.json"] encoding:NSUTF8StringEncoding error:&error];
-    // Return the status
-    return htmlData;
+- (IBAction)doIt:(id)sender {
+  // Call the service methods
+  NSString *todayAsString = [self.now description];
+  // Log the output to console and text area
+  NSLog(@"Today is %@", todayAsString);
+  _logArea.text = [_logArea.text stringByAppendingFormat:@"\nToday is %@", todayAsString];
 }
 
 @end

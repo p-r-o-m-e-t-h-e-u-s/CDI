@@ -22,12 +22,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MySample4Service.h"
+#import "MySample1Service.h"
 
 /**
 * This sample service fetches the status of the github.com service.
 */
-@interface MySample4ServiceImplemetation : NSObject <MySample4Service>
+@interface MySample1ServiceImplementation : NSObject <MySample1Service>
 
 /**
  * Count is counting the getService calls and has to be provided to satisfy the service protocol.

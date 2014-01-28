@@ -21,22 +21,28 @@
 //    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import "MySample4ServiceImplementation.h"
+#import "CDIInjector.h"
+
+// Define MySample4ServiceImplementation as a singleton
+@singleton(MySample4ServiceImplementation);
+
+@implementation MySample4ServiceImplementation
+
+// Inject the count instance
+@inject(count);
 
 /**
-* This service protocol is used for implementations which provide a status and counts
-* the status calls.
+* Return the status of the github.com service as string and increment the count.
 */
-@protocol MySample4Service <NSObject>
-
-/**
- * Return the status of the service as string.
- */
-- (NSString *)getStatus;
-
-/**
- * Return the count of status calls.
- */
-- (NSNumber *)count;
+- (NSString *)getStatus {
+  // Increment the count and assign a new value
+  count = [NSNumber numberWithInt:[count intValue] + 1];
+  // Execute the remote call
+  NSError *error;
+  NSString *htmlData = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:@"https://status.github.com/api/status.json"] encoding:NSUTF8StringEncoding error:&error];
+  // Return the status
+  return htmlData;
+}
 
 @end

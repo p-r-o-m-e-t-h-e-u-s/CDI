@@ -29,7 +29,7 @@ Here are some samples:
 @interface InjectExample: NSObject
 // Let's say you have one class which implements the MyServiceProtocol
 ...
-@property(nonatomic, readwrite) MyServiceProtocol *myService;
+@property(nonatomic, readwrite) id<MyServiceProtocol> *myService;
 ...
 @end
     
@@ -61,7 +61,7 @@ If multiple implementations are available, CDI will throw an __CDIException__ be
 @interface InjectExample: NSObject
 ...
 // Let's say you have multiple classes which implements the MyServiceProtocol
-@property(nonatomic, readwrite) MyServiceProtocol *myService;
+@property(nonatomic, readwrite) id<MyServiceProtocol> *myService;
 ...
 @end
     
@@ -80,7 +80,10 @@ __@inject__ will create an instance of __MyServiceImplementation__ and assign it
 
 **Full Sample Code:**
 
-*(To be defined.)*
+* [Service Protocol](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/MySample2Service.h)
+* [Specific Service Interface](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/MySample2ServiceImplemetation.h)
+* [Specific Service Implementation](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/MySample2ServiceImplemetation.m)
+* [Sample Controller](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/Sample2Controller.m)
 
 #### Sample 3: Simple injection with classes
 ```objc
@@ -108,7 +111,9 @@ The example `@inject(now);` is a reduced code of `synthesize now;` and `_now = [
 
 **Full Sample Code:**
 
-*(To be defined.)* 
+* [Sample Controller Interface ](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/Sample3Controller.h)
+* * [Sample Controller Implementation ](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/Sample3Controller.m)
+
 
 #### Sample 4: Simple singleton implementation
    
@@ -245,6 +250,10 @@ CDI has to be enabled before it can be used for development. Open the `AppDelega
 	
 @end
 ```
+
+**Full Sample Code:**
+
+* [AppDelegate Example](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/AppDelegate.m)
 
 ## License
 

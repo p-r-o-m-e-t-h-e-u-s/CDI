@@ -21,25 +21,17 @@
 //    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "MySample1ServiceImplemetation.h"
-#import "CDIInjector.h"
-
-@implementation MySample1ServiceImplemetation
-
-// Inject the count instance
-@inject(count);
+#import <Foundation/Foundation.h>
+#import "MySample2Service.h"
 
 /**
- * Return the status of the github.com service as string and increment the count.
+* This is a dummy service which prevents remote calls.
+*/
+@interface MySample2ServiceDummy : NSObject <MySample2Service>
+
+/**
+ * Count is counting the getService calls and has to be provided to satisfy the service protocol.
  */
-- (NSString *)getStatus {
-    // Increment the count and assign a new value
-    count = [NSNumber numberWithInt:[count intValue] + 1];
-    // Execute the remote call
-    NSError *error;
-    NSString *htmlData = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:@"https://status.github.com/api/status.json"] encoding:NSUTF8StringEncoding error:&error];
-    // Return the status
-    return htmlData;
-}
+@property(nonatomic, readonly) NSNumber *count;
 
 @end

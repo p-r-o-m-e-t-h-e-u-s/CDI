@@ -27,7 +27,7 @@
 * This service protocol is used for implementations which provide a status and counts
 * the status calls.
 */
-@protocol MySample4Service <NSObject>
+@protocol MySample2Service <NSObject>
 
 /**
  * Return the status of the service as string.

@@ -22,21 +22,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MySample2Service.h"
 
 /**
-* This service protocol is used for implementations which provide a status and counts
-* the status calls.
+* This sample service fetches the status of the github.com service.
 */
-@protocol MySample4Service <NSObject>
+@interface MySample2ServiceImplementation : NSObject <MySample2Service>
 
 /**
- * Return the status of the service as string.
+ * Count is counting the getService calls and has to be provided to satisfy the service protocol.
  */
-- (NSString *)getStatus;
-
-/**
- * Return the count of status calls.
- */
-- (NSNumber *)count;
+@property(nonatomic, readonly) NSNumber *count;
 
 @end

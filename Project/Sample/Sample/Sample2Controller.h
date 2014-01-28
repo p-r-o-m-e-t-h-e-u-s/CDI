@@ -20,23 +20,26 @@
 //    IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 //    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-
-#import <Foundation/Foundation.h>
-
-/**
-* This service protocol is used for implementations which provide a status and counts
-* the status calls.
-*/
-@protocol MySample4Service <NSObject>
+#import <UIKit/UIKit.h>
+#import "MySample2Service.h"
 
 /**
- * Return the status of the service as string.
+ * The sample controller which is used for the interaction and visualization of the view.
  */
-- (NSString *)getStatus;
+@interface Sample2Controller : UIViewController
 
 /**
- * Return the count of status calls.
+ * Reference to the sample service application.
  */
-- (NSNumber *)count;
+@property(nonatomic) id <MySample2Service> sampleService;
 
+/**
+ * This text area is used to log some output.
+ */
+@property(weak, nonatomic) IBOutlet UITextView *logArea;
+
+/**
+ * DoIt is called when the button pressed.
+ */
+- (IBAction)doIt:(id)sender;
 @end

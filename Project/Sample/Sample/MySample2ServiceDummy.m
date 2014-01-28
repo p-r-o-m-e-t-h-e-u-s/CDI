@@ -21,22 +21,21 @@
 //    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import "MySample2ServiceDummy.h"
+#import "CDIInjector.h"
+
+@implementation MySample2ServiceDummy
+
+// Inject the count instance
+@inject(count);
 
 /**
-* This service protocol is used for implementations which provide a status and counts
-* the status calls.
-*/
-@protocol MySample4Service <NSObject>
-
-/**
- * Return the status of the service as string.
+ * Return the dummy status as string and increment the count.
  */
-- (NSString *)getStatus;
-
-/**
- * Return the count of status calls.
- */
-- (NSNumber *)count;
+- (NSString *)getStatus {
+  // Increment the count and assign a new value
+  count = [NSNumber numberWithInt:[count intValue] + 1];
+  return @"[Dummy Status: Ok]";
+}
 
 @end

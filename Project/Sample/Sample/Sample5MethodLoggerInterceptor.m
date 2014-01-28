@@ -29,12 +29,12 @@
 * Log the method entering and leaving to the console.
 */
 - (void)invoke:(CDIInvocationContext *)context {
-    // Log method entering
-    NSLog(@"-> Entering [%@ %@]", context.target, context.method);
-    // Call the next interceptor or execute the method, if there is no other interceptor
-    [context execute];
-    // Log method leaving
-    NSLog(@"<- Leaving [%@ %@]", context.target, context.method);
+  // Log method entering
+  NSLog(@"-> Entering [%@ %@]", context.target, context.method);
+  // Call the next interceptor or execute the method, if there is no other interceptor
+  [context execute];
+  // Log method leaving
+  NSLog(@"<- Leaving [%@ %@]", context.target, context.method);
 }
 
 @end

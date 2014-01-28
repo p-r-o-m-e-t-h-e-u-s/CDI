@@ -29,9 +29,9 @@
 * Initialize CDI to enable context and dependency injection
 */
 + (void)initialize {
-    [super initialize];
-    // Enable context and dependency injection
-    [CDI initialize];
+  [super initialize];
+  // Enable context and dependency injection
+  [CDI initialize];
 }
 
 @end

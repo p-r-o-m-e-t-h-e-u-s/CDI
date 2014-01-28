@@ -50,8 +50,8 @@ If multiple implementations are available, CDI will throw an __CDIException__ be
 **Full Sample Code:**
 
 * [Service Protocol](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/MySample1Service.h)
-* [Specific Service Interface](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/MySample1ServiceImplemetation.h)
-* [Specific Service Implementation](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/MySample1ServiceImplemetation.m)
+* [Specific Service Interface](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/MySample1ServiceImplementation.h)
+* [Specific Service Implementation](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/MySample1ServiceImplementation.m)
 * [Sample Controller](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/Sample1Controller.m)
 
 
@@ -81,8 +81,8 @@ __@inject__ will create an instance of __MyServiceImplementation__ and assign it
 **Full Sample Code:**
 
 * [Service Protocol](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/MySample2Service.h)
-* [Specific Service Interface](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/MySample2ServiceImplemetation.h)
-* [Specific Service Implementation](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/MySample2ServiceImplemetation.m)
+* [Specific Service Interface](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/MySample2ServiceImplementation.h)
+* [Specific Service Implementation](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/MySample2ServiceImplementation.m)
 * [Sample Controller](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/Sample2Controller.m)
 
 #### Sample 3: Simple injection with classes
@@ -136,8 +136,8 @@ __@singleton__ will augment the class __MySample4ServiceImplementation__ so that
 
 **Full Sample Code:**
 * [Service Protocol](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/MySample4Service.h)
-* [Specific Service Interface](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/MySample4ServiceImplemetation.h)
-* [Specific Service Implementation](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/MySample4ServiceImplemetation.m)
+* [Specific Service Interface](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/MySample4ServiceImplementation.h)
+* [Specific Service Implementation](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/MySample4ServiceImplementation.m)
 * [Sample Controller](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/Sample4Controller.m)
 
 #### Sample 5: Interceptor implementation

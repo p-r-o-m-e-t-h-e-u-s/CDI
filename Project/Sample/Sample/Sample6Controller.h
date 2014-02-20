@@ -20,22 +20,24 @@
 //    IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 //    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-#import "Sample3Controller.h"
+
+#import <UIKit/UIKit.h>
 #import "CDIInjector.h"
+#import "Sample6Service.h"
 
-@class synthesize;
+/**
+ * The sample controller which is used for the interaction and visualization of the view.
+ */
+@interface Sample6Controller : UIViewController
 
-@implementation Sample3Controller
+/**
+ * The Demo class which is used for testing.
+ */
+@property(nonatomic) id<Sample6Service> demoService;
 
-// Inject the an instance of NSDate
-@inject(now);
-
-- (IBAction)doIt:(id)sender {
-  // Call the service methods
-  NSString *todayAsString = [self.now description];
-  // Log the output to console and text area
-  NSLog(@"Today is %@", todayAsString);
-  _logArea.text = [_logArea.text stringByAppendingFormat:@"\nToday is %@", todayAsString];
-}
+/**
+ * DoIt is called when the button pressed.
+ */
+- (IBAction)doIt:(id)sender;
 
 @end

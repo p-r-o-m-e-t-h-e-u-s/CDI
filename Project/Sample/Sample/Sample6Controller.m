@@ -20,22 +20,18 @@
 //    IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 //    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-#import "Sample3Controller.h"
-#import "CDIInjector.h"
 
-@class synthesize;
+#import "Sample6Controller.h"
 
-@implementation Sample3Controller
+@implementation Sample6Controller
 
-// Inject the an instance of NSDate
-@inject(now);
+// Inject the demo instance.
+@inject(demoService);
 
 - (IBAction)doIt:(id)sender {
-  // Call the service methods
-  NSString *todayAsString = [self.now description];
-  // Log the output to console and text area
-  NSLog(@"Today is %@", todayAsString);
-  _logArea.text = [_logArea.text stringByAppendingFormat:@"\nToday is %@", todayAsString];
+  // Call the interceptors and the doDemo method.
+  // [demo doDemo];
+  NSLog(@"Service implementation: %@ => %@", demoService, [demoService doService]);
 }
 
 @end

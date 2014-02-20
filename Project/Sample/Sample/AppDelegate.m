@@ -22,6 +22,9 @@
 //
 #import "AppDelegate.h"
 #import "CDI.h"
+#import "Sample6Service.h"
+#import "Sample6ServiceImplementation2.h"
+
 
 @implementation AppDelegate
 
@@ -32,6 +35,7 @@
   [super initialize];
   // Enable context and dependency injection
   [CDI initialize];
+  [[CDIInjector sharedInstance] bindProtocol:@protocol(Sample6Service) with:[Sample6ServiceImplementation2 class]];
 }
 
 @end

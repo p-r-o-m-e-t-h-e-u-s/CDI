@@ -112,7 +112,7 @@ The example `@inject(now);` is a reduced code of `synthesize now;` and `_now = [
 **Full Sample Code:**
 
 * [Sample Controller Interface ](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/Sample3Controller.h)
-* * [Sample Controller Implementation ](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/Sample3Controller.m)
+* [Sample Controller Implementation ](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/Sample3Controller.m)
 
 
 #### Sample 4: Simple singleton implementation
@@ -176,7 +176,7 @@ __@singleton__ will augment the class __MySample4ServiceImplementation__ so that
 
 **Discussion:**
 
-Interceptors are very useful to separated code with different aspects. For security reasons a [Facade](http://en.wikipedia.org/wiki/Facade_pattern) or [Input Validation](http://en.wikipedia.org/wiki/Input_validation) can be easily integrated using interceptors. Or Logging, tracing and profiling can easily be activated at runtime. All these and other aspects can smartly be separated from the application logic.
+Interceptors are very useful to separated code with different aspects. For security reasons a [Facade](http://en.wikipedia.org/wiki/Facade_pattern) or [Input Validation](http://en.wikipedia.org/wiki/Input_validation) can easily be integrated using interceptors. Or Logging, tracing and profiling can easily be activated at runtime. All these and other aspects can smartly be separated from the application logic.
 
 **Full Sample Code:**
 
@@ -191,16 +191,18 @@ Interceptors are very useful to separated code with different aspects. For secur
 // Override the auto-wiring by binding new implementation classes to use mocking objects.
 // Your test just needs to use the bindProtocol or bindClass method in the setup of your
 // Unit testing framework.
-[[CDI sharedInstance] bindProtocol:@protocol(ExampleProtocol) with:[MyMock class]];
+[[CDIInjector sharedInstance] bindProtocol:@protocol(ExampleProtocol) with:[MyMock class]];
 ```
 
 **Discussion:**
 
-*(To be defined.)* 
+Manual binding can be used to define a specific implementation. This can be very useful to exchange a implementation with a mock.
 
 **Full Sample Code:**
 
-*(To be defined.)* 
+* [Service Protocol](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/Sample6Service.m)
+* [Service Implementation](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample6ServiceImplementation2.m)
+* [Sample Controller](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/Sample6Controller.m)
 
 ## Usage
 

@@ -200,8 +200,8 @@ Manual binding can be used to define a specific implementation. This can be very
 
 **Full Sample Code:**
 
-* [Service Protocol](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/Sample6Service.m)
-* [Service Implementation](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample6ServiceImplementation2.m)
+* [Service Protocol](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/Sample/Sample6Service.h)
+* [Service Implementation](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/Sample6ServiceImplementation2.m)
 * [Sample Controller](https://github.com/real-prometheus/CDI/blob/master/Project/Sample/Sample/Sample6Controller.m)
 
 ## Usage

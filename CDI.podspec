@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CDI"
-  s.version      = "1.0.0-beta3"
+  s.version      = "1.0.0"
   s.summary      = "Simple, easy and very powerful way to use context and dependency injection and interception (minimalistic AOP) for Objective-C development."
   s.description  = <<-DESC
                     Simple, easy and very powerful way to use context and dependency injection and interception for Objective-C development. CDI is designed to solve some common software development patterns like Dependency Injection / Inversion of Control, Singleton and Interception (an minimalistic AOP approach).
